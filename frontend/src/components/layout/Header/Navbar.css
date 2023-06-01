@@ -1,0 +1,269 @@
+.NavMain{
+    display: flex;
+    justify-content: space-between;
+    background-color: #2874f0;
+    height: 3.7vmax;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+.leftNav{
+    flex:0.7;
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+}
+.leftcontent{
+    display: flex;
+    flex-direction: column;
+   margin-right: 1vmax;
+    height: 95%;
+    width: 50%;
+    margin-top:0.2vmax;
+}
+.leftcontent>h3>a{
+    color:white;
+    text-decoration: none;
+}
+.leftcontent>h3{
+    cursor: pointer;
+    margin:0;
+    align-self: flex-end;
+    font-size: 24px;
+
+}
+.leftcontent>p{
+    font-size: 14px;
+    margin: 0;
+    align-self: flex-end;
+    margin-right: 1vmax;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+}
+.leftcontent>p:hover{
+    text-decoration: underline;
+    color: rgb(255,255,255);
+}
+.leftcontent>p>i{
+    color:#ffe500;
+}
+
+.middleNav{
+    display: flex;
+    flex: 1.35;
+  position: relative; 
+}
+.middleNav>input{
+    margin-top: 0.7vmax;
+    width: 97%;
+    height: 62%;
+    border: none;
+    border-radius: 2px;
+    padding: 1vmax;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+   outline: none;
+}
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+.searchicon{
+    cursor: pointer;
+    color:#2874f0;
+    position: absolute;
+    margin-top: 1.1vmax;
+     transform: translate(33.5vmax);
+}
+.CancelSearchIcon{
+    position: absolute;
+    right: 190px;
+    top: 16.5px;
+    cursor: pointer;
+    color: #2874f0;
+}
+.rightNav{
+    align-items: center;
+    display: flex;
+    flex: 1.6;
+    gap:2.5vmax;
+    
+}
+.containerforlogin,.containerforMore {
+    padding: 10px;
+    position: relative;
+    cursor: pointer;
+  }
+
+
+  
+ 
+  
+  .containerforlogin:hover  .LoginPopUpDiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .containerforMore:hover .MorePopUpDiv{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+
+.containerforlogin>a>button{
+    cursor: pointer;
+   font-size: 15px;
+    font-weight:550;
+    padding: 0px 20px;
+    width: max-content;
+    color:#2874f0;
+    height: 30px;
+    background-color: #fff;
+    border: none;
+    align-self: center;
+}
+.LoginPopUpDiv {
+    display: none;
+    position: absolute;
+    top: 52.18px;
+    right:-80px;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+.MorePopUpDiv{
+    display: none;
+    position: absolute;
+    top: 82%;
+    right:-86px;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid rgba(204, 204, 204,0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+.newcustomer{
+    padding: 5px;
+    height: 15px;
+    display: flex;
+    gap:3vmax;
+}
+.wrapper{
+    padding: 15px;
+    border-bottom:2px solid rgba(133, 128, 128,0.2) ;
+}
+
+.wrapper2{
+    border-bottom:2px solid rgba(133,128,128,0.2);
+    padding: 10px 5px;
+}
+.wrapper2:hover{
+    background-color: rgba(128,128,128,0.1);
+}
+.MyProfile{
+    padding: 10px;
+    display: flex;
+    gap:1vmax;
+}
+
+.ProfileNavIcon{
+    color:#2874f0;
+}
+.signupnavlink{
+    color:#2874f0;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.signupnavlink:hover{
+    text-decoration: underline;
+}
+
+
+
+
+
+.LoginPopUpDiv::after,.MorePopUpDiv::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left:44%;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ffffff;
+  }
+
+.rightNav>h4{
+    cursor: pointer;
+    padding: 0.3vmax;
+    margin-top: 1.7vmax;
+    font-size: large;
+    line-height: 20px;
+    font-size: 17px;
+    letter-spacing: .1px;
+    font-weight: 500;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.MoreSelectNav>h4{
+    color: white;
+    font-size: 17px;
+    letter-spacing: .1px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
+}
+.MoreSelectNav{
+    margin-top: 0.2vmax;
+    display: flex;
+}
+.MoreSelectNav>h4{
+    color:white;
+    cursor: pointer;
+}
+.ArrowiconNav{
+    color: white;
+    align-self: center;
+    cursor: pointer;
+}
+.cartNav{
+    display: flex;
+    gap: 0.3vmax;
+    position: relative;
+}
+.cartNav>h4{
+    margin-top: 1.7vmax;
+    color:#fff;
+    font-size: 18px;
+    cursor:pointer;
+    font-weight: 500;
+    letter-spacing: .02vmax;
+}
+.CarticonNav{
+    color:white;
+    align-self: center;
+    cursor: pointer;
+}
+.NumberOfItemsInCart{
+    background-color: rgba(251, 100, 27,0.8);
+    position: absolute;
+    top:11px;
+    left: 5px;
+    cursor: pointer;
+    justify-content: center;
+    border: 1px solid white;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+  

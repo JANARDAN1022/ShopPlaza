@@ -1,0 +1,39 @@
+.ProductSlidecontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:20px 5px ;
+    width: 225px;
+    height: 260px;
+    background-color: white;
+}
+.image{
+    height: 120px;
+}
+img{
+    height: 155px;
+}
+.image>img:hover{
+    transform: scale(1.05);
+}
+.ProductSlideinfo{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 1vmax;
+}
+.ProductTitle{
+   font-size: 18px;
+   align-self: center;
+   margin-top: 5px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.ShopNow{
+      align-self: center;
+     
+}
+.ProductInfoText{
+   opacity: 0.5;
+   font-size: 15px;
+   align-self: center;
+}

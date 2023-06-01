@@ -1,0 +1,31 @@
+.ProductsPagination{
+   cursor: pointer;
+    position: absolute;
+    bottom: 15px;
+    left:55%;
+}
+.NoProducts{
+    width: 100%;
+    display: flex;
+align-items: center;
+margin-right: 5%;
+margin-top: 16%;
+    flex-direction: column;
+}
+.NoProducts>h2{
+color: black;
+}
+.NoProducts>a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 3px;
+    background-color: #2874f0;
+    cursor: pointer;
+}
+.NoProducts>a:hover{
+    text-decoration: underline;
+    transition: all 300ms ease;
+}

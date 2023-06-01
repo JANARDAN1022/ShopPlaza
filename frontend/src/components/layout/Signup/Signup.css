@@ -1,0 +1,133 @@
+.SignupCard{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height:68vh;
+}
+.SignupContainer{
+    overflow: hidden;
+    border-radius:5px;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.3);
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+.SignupLeftDiv{
+    flex: 1;
+    background-color: #2874f0;
+}
+h2{
+    color:white;
+    margin-left: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+}
+.signupLeftDivContainer>span{
+  color: rgba(255,255,255,0.8);
+}
+.signupTextFirstPart{
+    display: block;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.SignupLEftDivTEXT{
+    display: block;
+    margin-top: 6px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.signupLeftDivContainer{
+    padding:20px;
+    background-image: url('https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png');
+    background-repeat: no-repeat;
+    background-position-x: 60%;
+    background-position-y:80% ;
+    height: 92%;
+}
+.signupRightDiv{
+    flex: 1.7;
+    background-color: white;
+}
+.signupRightDivcontainer{
+    height: 100%;
+}
+.SignupButton{
+    background: #fb641b;
+    border: none;
+    padding: 10px;
+    width: 350px;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.SignupButton:hover{
+    color: white;
+}
+.SignupForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    height: 50%;
+    width: 80%;
+    gap: 2vmax;
+    padding: 20px;
+}
+
+.FirstNameInput>input{
+    margin-top: 10px;
+}
+
+.emailInput,.passwordInput,.FirstNameInput,.SecondNameInput{
+    width: 80%;
+}
+
+.emailInput>input,.passwordInput>input,.FirstNameInput>input,.SecondNameInput>input{
+    border: none;
+     border-bottom:1px solid black ;
+     width: 100%;
+     height: 30px;
+     outline: none;
+ }
+
+.LoginLink{
+    margin-top: 10vmax;
+    margin-left: 8vmax;
+}
+.LoginLink>a{
+    text-decoration: none;
+    color: #2874f0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.1px;
+}
+.GenderInput{
+    width: 100%;
+    display: flex;
+    padding: 5px;
+    gap: 50px;
+}
+.GenderInput>span{
+font-size: 18px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.MaleGenderDiv,.FemaleGenderDiv{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.MaleGenderDiv>span,.FemaleGenderDiv>span{
+    font-size: 18px;
+    pointer-events: none;
+}
+.MaleGenderDiv>input,.FemaleGenderDiv>input{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}

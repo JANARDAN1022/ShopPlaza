@@ -1,0 +1,13 @@
+.CategoryHeadMainDiv{
+    margin-top: 57px;
+    color: #212121;
+    background-color: white;
+}
+.CategoryHeadWrapper{
+    display: flex;
+    gap: 4.5vmax;
+    padding-top: 15px;
+    margin-left: 10%;
+    background-color: white;
+   
+}

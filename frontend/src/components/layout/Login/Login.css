@@ -1,0 +1,105 @@
+.LoginCard{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height:68vh;
+}
+.LoginContainer{
+    overflow: hidden;
+    border-radius:5px;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.3);
+    display: flex;
+    width: 60%;
+    height: 100%;
+}
+.LoginLeftDiv{
+    flex: 1;
+    background-color: #2874f0;
+}
+h2{
+    color:white;
+    margin-left: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+}
+.LoginLeftDivContainer>span{
+  color: rgba(255,255,255,0.8);
+}
+.LoginTextFirstPart{
+    display: block;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.LoginLEftDivTEXT{
+    display: block;
+    margin-top: 6px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.LoginLeftDivContainer{
+    padding:20px;
+    background-image: url('https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png');
+    background-repeat: no-repeat;
+    background-position-x: 60%;
+    background-position-y:80% ;
+    height: 92%;
+}
+.LoginRightDiv{
+    flex: 1.7;
+    background-color: white;
+}
+.LoginRightDivcontainer{
+    height: 100%;
+}
+.LoginButton{
+    background: #fb641b;
+    border: none;
+    padding: 10px;
+    width: 350px;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+.LoginButton:hover{
+    color: white;
+}
+.LoginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    height: 50%;
+    width: 80%;
+    gap: 2vmax;
+    padding: 15px;
+}
+.EmailInput,.PasswordInput{
+    width: 80%;
+}
+.EmailInput{
+    margin-top: 10%;
+}
+.EmailInput>input,.PasswordInput>input{
+   border: none;
+    border-bottom:1px solid black ;
+    width: 100%;
+    height: 30px;
+    outline: none;
+}
+.SignupLink{
+    margin-top: 10vmax;
+    margin-left: 8vmax;
+}
+.SignupLink>a{
+    text-decoration: none;
+    color: #2874f0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.1px;
+}

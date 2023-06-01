@@ -1,0 +1,82 @@
+.FooterMainDiv{
+    height: max-content;
+    background-color:#172337;
+    margin-top: 15px;
+}
+.FooterContainer{
+    display: flex;
+    flex-direction: column;
+}
+.FooterInfoDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.FooterHelpSec,.FooterConsumerPolicySec,.FooterSocialSec{
+    padding: 0px 25px;
+    border-left: 1px solid rgba(255,255,255,0.6);
+}
+
+.AboutHead,.HelpHead,.ConsumerPolicyHead,.SocialHead{
+    color: #878787;
+}
+.AboutInfo,.HelpContent,.ConsumerPolicyContent,.SocialContent{
+    color: white;
+    cursor: pointer;
+}
+.AboutInfo>h4:hover,.HelpContent>h4:hover,.ConsumerPolicyContent>h4:hover,.SocialContent>h4:hover{
+    text-decoration: underline;
+}
+
+.FooterBecomeSellerDiv{
+padding: 0px 80px;
+border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.SellerContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.BecomeSellerHead{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.BecomeSellerHead,.HelpCentreHead>h4,.CopyRightMark>h4{
+    color:white;
+}
+
+.BecomeSellerHead>img{
+    width: 22px;
+    height: 22px;
+}
+
+.HelpCentreHead{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.HelpCentreHead>svg{
+    color: #ffe11b;
+}
+
+.FooterCardimages{
+    height: 18px;
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.FooterCardimages>img{
+    height: 100%;
+}
+

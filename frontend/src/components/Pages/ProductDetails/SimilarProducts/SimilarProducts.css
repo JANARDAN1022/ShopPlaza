@@ -1,0 +1,196 @@
+.SimilarProductsMainDiv{
+    height: max-content;
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+   position: relative;
+
+}
+.SimilarProductsContainer{
+    width: 100%;
+    display: flex;
+    gap:10px;
+    
+}
+.SimilarProducts{
+    display: flex;
+    gap:10vmax;
+    padding: 10px 40px;
+    flex-wrap: wrap;
+    flex:4;
+    background-color: white;
+}
+.SimilarProductsFilter{
+    flex: 1;
+    background-color: white;
+    height: 80%;
+    padding: 5px;
+}
+
+.FilterHead{
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+.SimilarProductsFilterContainer{
+    display: flex;
+    flex-direction: column;
+}
+.FilterHead{
+    display: flex;
+    flex-direction: column;
+}
+.FILTERHEADS{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.FILTERHEADS>h3{
+    margin-left: 10px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.FILTERHEADS>span{
+    margin-right: 15px;
+    cursor: pointer;
+    color: rgb(40, 116, 240);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.FILTERHEADS>span:hover{
+    color: rgba(40,116,240,0.8);
+    transition: all 300ms ease;
+}
+.SelectedFilters{
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    margin-left: 10px;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+
+.SelectedFiltersContent{
+    align-self: center;
+    align-items: center;
+    padding: 6px 10px;
+    background-color: rgba(0,0,0,0.2);
+    gap:5px
+}
+.SelectedFiltersContent:hover{
+    text-decoration: line-through;
+    background-color: rgba(0,0,0,0.3);
+    transition: all 400ms ease;
+}
+.SelectedFiltersContent>svg{
+    
+    cursor: pointer;
+}
+.SelectedFiltersContent>span{
+    font-size: 15px;
+}
+.PRICEFILTER{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.PRICESLIDER{
+    padding: 6px 20px;
+}
+.PRICEFILTER>h4{
+   margin-left: 15px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.PRICEFILTER>span{
+  margin-right: 10px;
+  color: rgb(40, 116, 240);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  cursor: pointer;
+}
+.PRICEFILTER>span:hover{
+  color: rgba(40,116,240,0.8);
+  transition: all 300ms ease;
+}
+.FILTERS{
+    border-bottom:2px solid rgba(0,0,0,0.1);
+    padding: 15px 3px;
+}
+.ShopPlazaAssured{
+    display: flex;
+    padding: 30px 12px;
+    gap:10px;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+.ShopPlazaAssured>span{
+    font-size: 20px;
+    background-color: rgb(40, 116, 240);
+    padding: 5px 10px;
+    color: white;
+}
+.ShopPlazaAssured>input{
+    height: 26px;
+    width: 26px;
+    cursor: pointer;
+}
+.AssuredIcon{
+    color: #ffe500;
+}
+.RATINGFILTER{
+    display: flex;
+    flex-direction: column;
+}
+.RATINGFILTER>span{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.Ratings{
+    display: flex;
+    flex-direction: column;
+    margin-left:25px;
+    gap: 8px;
+    padding: 5px;
+    margin-top: 10px;
+}
+.Ratings3>span,.Ratings4>span{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.Ratings3,.Ratings4{
+    display: flex;
+}
+.Ratings3>input,.Ratings4>input{
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+.RATINGICON{
+    align-self: center;
+}
+.SimilaProductsPageDiv{
+    width: 215px;
+    margin-bottom: 5px;
+    }
+.SimilarProductsWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.SimiliarProductsProductInfo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+}
+.Pagination{
+position: absolute;
+bottom: 10px;
+left: 48.5%;
+background-color: white;
+margin-bottom: 5px;
+}
+.PriceTag{
+    color: green;
+    background-color: rgba(124, 252, 0,0.2);
+    margin-left: 2px;
+}

@@ -1,0 +1,85 @@
+.ReviewSliderMain{
+    width: 720px;
+    position: relative;
+    padding-left:20px;
+
+}
+.ReviewSliderContent{
+display: flex;
+flex-direction: column;
+box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+background-color: rgba(40, 116, 240,0.5);
+border-radius: 10px;
+width: 330px !important;
+}
+.ReviewUserProfile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.RevieUserInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RevieUserInfoHead{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: 10px;
+    color: white;
+}
+.RevieUserInfoHead>span{
+    font-size: 20px;
+}
+.ReviewUserrating{
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border: 2px solid rgba(0,0,0,0.1);
+    width: 40px;
+    border-radius: 3px;
+    background-color: #2874f0;
+    color: white;
+}
+.userreviewratingstar{
+    color: yellow;
+}
+.ReviewComment{
+    display: flex;
+}
+
+.Review>p{
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    padding-left: 5px;
+    color: white;
+    background-color: rgba(0,0,0,0.1);
+}
+.LeftArrowReview{
+position: absolute;
+bottom: -50px;
+left: 35%;
+cursor: pointer;
+}
+.RightArrowReview{
+position: absolute;
+bottom: -50px;
+right: 40%;
+cursor: pointer;
+}
+.ArwBtn{
+    border: none;
+}
+.NoReviews{
+    color: white;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    background-color: rgba(40, 116, 240,0.7);
+    
+}

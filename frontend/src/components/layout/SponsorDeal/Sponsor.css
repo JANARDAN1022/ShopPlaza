@@ -1,0 +1,17 @@
+.SponsorMainDiv{
+    display: flex;
+    margin-top: 10px;
+    width: 98vmax;
+    margin-left: 2px;
+    gap: 1vmax;
+}
+.SponsorImage{
+    height: 250px;
+    width: 100%;
+}
+.SponsorImage>img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}

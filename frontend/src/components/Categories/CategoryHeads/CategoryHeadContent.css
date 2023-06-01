@@ -1,0 +1,24 @@
+.CHMainDiv{
+    background-color:white;
+    height: 110px;
+}
+.Categorycontainer{
+    cursor: pointer;
+}
+.Categorycontainer:hover{
+  color: #2874f0;
+}
+.CategoryHeadContentwrapper>img{
+    height: 70px;
+    align-self: center;
+    margin-bottom: 5px;
+}
+.CategoryHeadContentwrapper{
+    display:flex;
+    flex-direction: column;
+    width: max-content;
+}
+.CategoryHeadTitle{
+    align-self: center;
+}
+
