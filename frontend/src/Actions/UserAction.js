@@ -20,6 +20,7 @@ const instance = axios.create({
     baseURL: "http://localhost:5000/api/users", // API's base URL
   });
 
+  //Login User
 export const LoginUser = (email,password)=>async(dispatch)=>{
     try{
         dispatch({type:LOGIN_REQUEST});
@@ -39,7 +40,7 @@ export const LoginUser = (email,password)=>async(dispatch)=>{
     }
 }
 
-
+//RegisterUser
 export const RegisterUser = (FirstName,SecondName,email,password,gender)=>async(dispatch)=>{
     try {
         dispatch({type:REGISTER_REQUEST})
@@ -61,7 +62,7 @@ export const RegisterUser = (FirstName,SecondName,email,password,gender)=>async(
 }
 
 
-
+//Remember And Load User On Refresh/Load
 export const LoaodUser = ()=>async(dispatch)=>{
     try{
         dispatch({type:LOAD_REQUEST});
@@ -81,7 +82,7 @@ export const LoaodUser = ()=>async(dispatch)=>{
     }
 }
 
-
+//Logout User
 export const LogoutUser = ()=>async(dispatch)=>{
     try {
         const route = `/Logout`;
@@ -101,7 +102,7 @@ export const clearErrors =(dispatch)=>{
     dispatch({type:CLEAR_ERRORS});
    }
 
-
+//Update PersonalInfo(FirstName,SecondName,gender)
    export const PersonalInfoUpdate = (id,FirstName,SecondName,gender)=>async(dispatch)=>{
     try {
         const route = `/Update/${id}`;
@@ -116,6 +117,7 @@ export const clearErrors =(dispatch)=>{
     }
    }
 
+   //Update EmailID
    export const EmailInfoUpdate = (id,email)=>async(dispatch)=>{
     try {
         const route = `/Update/${id}`;
@@ -130,6 +132,7 @@ export const clearErrors =(dispatch)=>{
     }
    }
 
+   //Update Password
    export const PasswordInfoUpdate = (id,currentPassword,newPassword)=>async(dispatch)=>{
     try {
         const route = `/Update/${id}`;

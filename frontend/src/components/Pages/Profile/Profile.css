@@ -34,7 +34,7 @@
 .UserName>h3{
     font-size: 20px;
 }
-.MyOrders{
+.MyOrders,.MyWishList{
     border-radius: 10px;
     padding-left: 20px;
     background-color: white;
@@ -45,7 +45,7 @@
     align-items: center;
     padding-right: 20px;
 }
-.MyOrders:hover{
+.MyOrders:hover,.MyWishList:hover{
     background-color: rgba(255,255,255,0.5);
 }
 .RightSideProfile{

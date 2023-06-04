@@ -39,7 +39,7 @@ const handleRemove = (id)=>{
 }
 
 const checkoutHandler = ()=>{
-  Navigate(`/Login?redirect=Shipping`)
+  Navigate(`/Login?redirect=Checkout`)
 }
 
 
@@ -110,7 +110,7 @@ const checkoutHandler = ()=>{
      }
 
      <div className='PlaceOrder' style={{display:cartItems?.length<1?'none':''}}>
-     <button onClick={checkoutHandler}>Place Order</button>
+     <button onClick={checkoutHandler}>Proceed To Checkout</button>
      </div>
 
      </div>

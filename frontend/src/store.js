@@ -19,6 +19,10 @@ let initialState = {
         JSON.parse(localStorage.getItem("cartItems"))
         :
         [],
+        shippinInfo:localStorage.getItem("shippinInfo")?
+        JSON.parse(localStorage.getItem("shippingInfo"))
+        :
+        []
     }
 };
 
