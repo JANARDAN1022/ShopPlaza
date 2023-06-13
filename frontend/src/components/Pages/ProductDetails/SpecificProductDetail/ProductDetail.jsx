@@ -21,12 +21,34 @@ const ProductDetail = () => {
   },[dispatch,productid]);
 
   const {loading,error,product} =useSelector(state=>state.productDetails);
+  const {user} = useSelector(state=>state.user);
+  const userId = user?._id;
+  const ProductName = `${product?.name}`;
+  const ProductImg = `${product?.images?.[0].url}`;
+  const productPrice = product?.price;
+  const stock = product?.stock;
+  const ItemId = product?._id;
+ 
   
 
   const AddToCartHandler =()=>{
     setquantity(1);
-    dispatch(addToCart(productid,quantity));
-    Navigate(`/Cart`);
+    if(ProductName!=='' && ProductImg!=='' && productPrice && quantity>0 && stock>0){
+    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock));
+    setTimeout(() => {
+      Navigate('/Cart');
+    }, 1000);
+  }
+  }
+
+  const HandleBuyNow = ()=>{
+    setquantity(1);
+    if(ProductName!=='' && ProductImg!=='' && productPrice && quantity>0 && stock>0){
+    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock));
+    setTimeout(() => {
+      Navigate(`/BuyNow/${productid}`);
+    }, 1000);
+  }
   }
 
   return (
@@ -69,7 +91,7 @@ const ProductDetail = () => {
         </div>
                 :
        <div className='ProductBuyButton'>
-        <button>Buy Now</button>
+        <button onClick={HandleBuyNow}>Buy Now</button>
      <div className='ProductDetailIconBolt'>
      <FaBolt size={21} className='BoltIcon'/>
       </div>

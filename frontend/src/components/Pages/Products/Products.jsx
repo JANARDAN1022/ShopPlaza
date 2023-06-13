@@ -141,7 +141,7 @@ const check4ref =useRef();
         </div>
       </div>
       <div className='ShopPlazaAssured'>
-      <input type='checkbox' />
+      <input type='checkbox' name='Plazaassuredcheckbox'/>
       <span>ShopPlaza-Assured<BsCheck2All size={18} className='AssuredIcon'/></span>
 
       </div>
@@ -150,13 +150,13 @@ const check4ref =useRef();
          <span>Filter BY  Ratings</span>
          <div className='Ratings'>
           <div className='Ratings3'>
-          <input  type='checkbox' value={3} onChange={handleRatingChange} ref={check3ref} onClick={()=>{
+          <input  name='3ratingscheckbox' type='checkbox' value={3} onChange={handleRatingChange} ref={check3ref} onClick={()=>{
             check4ref.current.checked =false;
           }}/>
          <span>3<AiFillStar className='RATINGICON' size={15}/> & above</span>
          </div>
          <div className='Ratings4'>
-         <input  type='checkbox' value={4} onChange={handleRatingChange} ref={check4ref}  onClick={()=>{
+         <input  type='checkbox' name='4ratingscheckbox' value={4} onChange={handleRatingChange} ref={check4ref}  onClick={()=>{
             check3ref.current.checked =false;
           }}/>
          <span>4<AiFillStar size={15} className='RATINGICON'/> & above</span>

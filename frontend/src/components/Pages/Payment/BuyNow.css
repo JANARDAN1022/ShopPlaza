@@ -1,0 +1,862 @@
+.PaymentMain{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.PaymentNav{
+    height: 70px;
+    background-color: #2874f0;
+    display: flex;
+    justify-content: space-between;
+}
+.PaymentNaveLeft{
+    margin-left: 100px;
+}
+.PaymentNaveLeft>h3{
+    font-size: 24px;
+}
+.PaymentNaveLeft>h3>a{
+    color:white;
+    text-decoration: none;
+}
+.PaymentNavRight{
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+}
+.PaymentNavRight>span{
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+.PaymentNavRight>svg{
+    color: white;
+    margin-top: 3px;
+    cursor: pointer;
+}
+.StepInfo{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: 90px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.PaymentContainer{
+    height: 100%;
+    display: flex;
+    gap: 80px;
+}
+.PaymentLeft{
+    margin-left: 90px;
+    gap: 50px;
+ display: flex;
+ flex-direction: column;
+}
+
+.Shipping{
+    background-color: white;
+    height: 300px;
+    width: 600px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.NoSavedAddress{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.NoAddressDiv{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+.NoAddressDiv>h1{
+    color: #2874f0;
+}
+.AddNewAddressNoSaved{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.AddNewAddressNoSaved>span{
+    color: rgba(40, 116, 240,0.7);
+    font-size: 20px;
+    cursor: pointer;
+}
+.AddNewAddressNoSaved>span:hover,.AddNewAddressNoSaved>svg:hover{
+    color: #2874f0;
+}
+.AddNewAddressNoSaved>svg{
+    color: rgba(40, 116, 240,0.7);
+    cursor: pointer;
+}
+.TruckNoAdress{
+    color: orange;
+}
+
+.SDAddress,.SDcontainer{
+    height: 100%;
+}
+.AEPiNFO{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.ADDRessinfo{
+    border-bottom: 1px solid rgba(40, 116, 240,0.5);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    gap: 15px;
+}
+
+.SelectedAddress{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    font-size: 18px;
+    gap: 2px;
+}
+.SADDress{
+    width: 222px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.SelectedPincode{
+    display: flex;
+    gap: 10px;
+}
+.SP{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.SP>svg{
+    color: #2874f0;
+}
+
+.EPHinfo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 20px;
+}
+.Einfo,.PHinfo{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.Einfo>:nth-child(1){
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.PHinfo>:nth-child(1){
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.Einfo>:nth-child(2),.PHinfo>:nth-child(2){
+    color: #2874f0;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.AddNewAddress{
+    display: flex;
+}
+
+.AddNewAddress>span{
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 20px;
+    color: rgba(40, 116, 240,0.7);
+}
+.AddNewAddress>span:hover{
+    color: #2874f0;
+    transition: all 200ms ease;
+}
+.AvaialableAddresses{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.AvaialableAddressesHead{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgba(40, 116, 240,0.5);
+}
+.SelectAddressBelow{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.SelectAddressBelow>svg{
+    color:orange;
+}
+.SelectAddressBelow>span{
+    font-size: 18px;
+    color: #2874f0;
+    letter-spacing: 0.5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.ChangeAddress{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.PincodeShippingHead{
+    display: flex;
+    align-items: center;
+    color: #2874f0;
+    cursor: default;
+     
+    padding: 10px;
+    height: 100%;
+}
+.ChangeAddress>span{
+    font-size: 18px;
+    color: #2874f0;
+    cursor: pointer;
+}
+.ChangeAddress>span:hover{
+    text-decoration: underline;
+}
+.SelectedNone{
+    display: flex;
+    justify-content: center;
+    height: 170px;
+    border-bottom: 1px solid rgba(40, 116, 240,0.5);
+}
+.SelectedNone>span{
+    align-self: center;
+    color: #2874f0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.SavedAddresses{
+    position: absolute;
+    background-color: white;
+    height: 500px;
+    top: 100px;
+    left: 500px;
+    width: 500px;
+    padding-top: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 3px 4px rgba(0,0,0,0.3) ;
+}
+.CloseCHangeAddress{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #2874f0;
+    cursor: pointer;
+}
+.SelectSavedAddresshead{
+      padding: 10px;
+    border-bottom: 1px solid rgba(40, 116, 240,0.3);
+}
+.SelectSavedAddresshead>span{
+    color: orange;
+    font-size: 20px;
+   
+}
+
+.SavedAddressInfos{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(40, 116, 240,0.5);
+}
+.SavedInfo{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+.addressInfoBelow{
+    width: 162px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 10px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    color: rgba(0,0,0,0.8);
+}
+.PincodeSaved{
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+    align-items: center;
+}
+.PincodeSaved>svg{
+    color: #2874f0;
+}
+.UserEmailPhoneInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10px;
+}
+.USERemail,.UserPhoneNUM{
+    display: flex;
+    gap: 15px;
+}
+.USERemail>:nth-child(1){
+    font-weight: 600;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+}
+.UserPhoneNUM>:nth-child(1){
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 0.5px;
+}
+.USERemail>:nth-child(2),.UserPhoneNUM>:nth-child(2){
+    color: #2874f0;
+    pointer-events: none;
+    font-size: 17px;
+}
+
+.PickAddress{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.SelectAddressOption{
+    display: flex;
+    gap: 10px;
+}
+.SelectAddressOption>input{
+    cursor: pointer;
+}
+.SelectAddressOption>label{
+    color: orange;
+}
+
+.PickAddress>span{
+    color: rgba(255, 99, 71,0.7);
+    cursor: pointer;
+}
+.PickAddress>span:hover{
+    color: red;
+    transition: all 300ms ease;
+}
+
+
+
+.PaymentMethod{
+    background-color: white;
+    height: 200px;
+    width: 600px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+.SelectMethodofPayment{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.StripeMethod{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #2874f0;
+    cursor: pointer;
+    flex: 1;
+}
+.StripeMethod>svg{
+    color: #2874f0;
+}
+.StripeMethod:hover,.CashMethod:hover{
+    background-color:rgba(40, 116, 240,0.1);
+}
+.CashMethod{
+    flex: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    color: green;
+    align-items: center;
+}
+.SelectedMethod{
+    background-color:rgba(40, 116, 240,0.3);
+}
+.SelectedMethod:hover{
+    background-color:rgba(40, 116, 240,0.3);
+}
+.PaymentRight{
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+.OrderPaymentInfo{
+    background-color: white;
+    height: 370px;
+    width: 700px;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.1);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+.OIPHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+.OIPHEADdiv{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left:20px;
+    padding: 10px;
+    height: 50px;
+}
+.OIPHEADdiv>svg{
+    color: orange;
+}
+.OIPHEADdiv>p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.OIPHead>a{
+    margin-right: 50px;
+    text-decoration: none;
+    color: rgba(40, 116, 240,0.8);
+    cursor: pointer;
+    font-size: 18px;
+}
+.OIPHead>a:hover{
+color: #2874f0;
+}
+.OrderProducts{
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+}
+.orderProductsHead{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+.OrderProductsHeadRight{
+    display: flex;
+    gap: 120px;
+   margin-right: 30px;
+    font-size: 18px;
+}
+.orderHeadPrice{
+    margin-right:10px;
+}
+.CartItemsInfo{
+    display: flex;
+    
+}
+.OrderItems{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100px;
+    gap: 25px;
+    padding: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.OrderItems::-webkit-scrollbar,.SavedAddresses::-webkit-scrollbar {
+    width: 10px;
+  }
+ .OrderItems::-webkit-scrollbar-thumb,.SavedAddresses::-webkit-scrollbar-thumb {
+    background-color: rgba(40, 116, 240,0.8);
+    border-radius: 4px;
+  }
+  
+  /* Style of the scrollbar track */
+  .OrderItems::-webkit-scrollbar-track,.SavedAddresses::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+  }
+.OrederitemsLeft{
+    display: flex;
+    gap: 50px;
+}
+.OrderItemImage>img{
+    width: 80px;
+    height: 80px;
+}
+.orderItemsInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.OrderItemsContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.orderBuyItemsRight{
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.BuyNowquantity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-left: 40px;
+    width: 100px;
+}
+.BuyNowquantity>:nth-child(1),.BuyNowquantity>:nth-child(3){
+    background-color: #2874f0;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 20px;
+}
+.OrderitemsQuantity{
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+}
+.BuyNowPrice{
+    padding: 10px;
+    margin-right: 20px;
+}
+.OrderItemsPrice{
+    color: green;
+    font-size: 18px;
+    font-weight: 600;
+}
+.OrderSUbTotal{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    gap: 5px;
+}
+.Subtotal{
+    display: flex;
+    gap: 50px;
+    margin-right: 40px;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+.Subtotal,.ShippingChargerCheckout{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.ShippingChargerCheckout{
+    display: flex;
+    gap: 50px;
+    margin-right: 45px;
+    font-size: 20px;
+}
+.TotalAmountOrders{
+    display: flex;
+    justify-content: flex-end;
+}
+.SumAmount{
+    display: flex;
+    gap: 50px;
+    margin-right: 20px;
+    align-items: center;
+    margin-top: 12px;
+}
+.TotalHeadOrders{
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.TotalAmountInfo{
+    font-size: 20px;
+    
+}
+.PaymentRight>button{
+    width: 230px;
+    height: 50px;
+    background-color: rgba(251, 100, 27,0.8);
+    border: none;
+    border-radius: 3px;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    cursor: pointer;
+}
+.PaymentRight>button:hover{
+    background-color: #fb641b;
+    color: white;
+    transition: all 100ms ease;
+}
+
+.PaymentMethod{
+    display: flex;
+    flex-direction: column;
+}
+.PaymentMethodTitle{
+    display: flex;
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.PaymentMethodHead{
+display: flex;
+align-items: center;
+gap: 60px;
+margin-left: 50px;
+}
+.PaymentMethodHead>svg{
+    color: orange;
+}
+.PaymentMethodHead>span{
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: .5px;
+    color: #2874f0;
+}
+.EditPaymentMethod>span{
+    margin-right: 10px;
+    color: rgba(40, 116, 240,0.7);
+    cursor: pointer;
+}
+.EditPaymentMethod>span:hover{
+  color: #2874f0;
+}
+
+.CreateNewAddress{
+    border: 1px solid rgba(0,0,0,0.2);
+    position: absolute;
+    top: 150px;
+    left: 500px;
+    background-color: white;
+    width: 650px;
+    height: 550px;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 4px 3px 4px rgba(0,0,0,0.2);
+}
+.CreateNewAddressContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.AddNewAddressHead{
+    font-size: 20px;
+    color: orange;
+    align-self: center;
+    border-bottom: 1px solid rgba(40, 116, 240,0.5);
+}
+.CloseNewAddress{
+    position: absolute;
+    right: 20px;
+    top:20px;
+    color: #2874f0;
+    cursor: pointer;
+}
+.CityStateInfo{
+margin-top: 10px;
+display: flex;
+flex-direction: column;
+padding: 10px;
+gap: 20px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   
+}
+.StateSelect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.CitySelect{
+    display: flex;
+    margin-left: 85px;
+    align-items: center;
+    gap: 10px;
+}
+.StateSelect>span,.CitySelect>span{
+    color: #2874f0;
+ font-size: 18px;
+}
+
+.StateSelect>select,.CitySelect>select{
+    border: 1px solid orange;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.StateSelect>select>option,.CitySelect>select>option{
+    color: #2874f0;
+ 
+}
+.AddressInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.AddressInfo>span{
+    font-size: 18px;
+    color: #2874f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 18px;
+}
+.AddressInfo>input{
+    padding: 15px;
+    border: 1px solid orange;
+    border-radius: 5px;
+}
+.AddressInfo>::-webkit-input-placeholder{
+    color: rgba(0,0,0,0.5);
+    font-size: 15px;
+    padding-left: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+}
+.PincodePhoneNumberInfo{
+    display: flex;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.AddNewAddressPhoneNo,.AddNewaddresspincode{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.AddNewAddressPhoneNo>span{
+    color: #2874f0;
+    font-size: 15px;
+    width: 90px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.AddNewaddresspincode>span{
+    color: #2874f0;
+    font-size: 16px;
+    font-weight: 600;
+    width: 70px;
+}
+.AddNewAddressPhoneNo>input,.AddNewaddresspincode>input{
+    border: 1px solid orange;
+    width: 200px;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+}
+.AddNewAddressPhoneNo>input::-webkit-inner-spin-button
+,.AddNewaddresspincode>input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+.AddNewAddressEmail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.AddNewAddressEmail>span{
+    color: #2874f0;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+.AddNewAddressEmail>input{
+    border: 1px solid orange;
+    width: 350px;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+}
+.AddNewAddressEmail>::-webkit-input-placeholder{
+    padding-left: 20px;
+    color: rgba(0,0,0,0.5);
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.AddressType{
+    display: flex;
+    gap: 20px;
+    margin-left: 30px;
+}
+.AddressType>span{
+    border-radius: 5px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    color: rgba(40, 116, 240,0.7);
+    cursor: pointer;
+    border: 1px solid orange;
+    padding: 10px;
+}
+.AddressType>span:hover{
+    transition: all 300ms ease;
+    color: #2874f0;
+    background-color: rgba(40, 116, 240,0.1);
+}
+.SubmitAddressBtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.SubmitAddressBtn>button{
+    border: none;
+    background-color: rgba(40, 116, 240,0.8);
+    color: rgba(255,255,255,0.8);
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.SubmitAddressBtn>button:hover{
+    color: white;
+    background-color: #2874f0;
+    transition: all 300ms ease;
+}
+
+.PincodeHover{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 40px;
+    left: 20px;
+    width: 221px;
+    background-color: white;
+    height: 100px;
+    border: 1px solid rgba(0,0,0,0.5);
+    gap: 15px;
+    padding: 5px;
+}
+.PincodeHover>span{
+    margin-left: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.PincodeSelectedAddresInfo>:nth-child(1),.PincodeAddresSavedInfo>:nth-child(1){
+    font-size: 15px;
+    font-weight: 600;
+}
+.PincodeSelectedAddresInfo>:nth-child(2),.PincodeAddresSavedInfo>:nth-child(2){
+    font-size: 14px;
+}
+.AddAddresserror{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+    align-self: center;
+}
+

@@ -295,6 +295,7 @@ const Profile = () => {
               ref={FirstNref}
               value={UserInfo.FirstName}
               onChange={FirstNameChange}
+              name="firstnameinput"
             />
           </div>
 
@@ -305,6 +306,7 @@ const Profile = () => {
               ref={SecondNref}
               value={UserInfo.SecondName}
               onChange={SecondNameChange}
+              name="secondnameinput"
             />
           </div>
 
@@ -315,6 +317,7 @@ const Profile = () => {
               <input
                 type="checkbox"
                 ref={Maleref}
+                name="malecheckbox"
                 onClick={HandleGenderChangeMale}
               />
             </div>
@@ -323,6 +326,7 @@ const Profile = () => {
               <input
                 type="checkbox"
                 ref={Femaleref}
+                name="femalecheckbox"
                 onClick={HandleGenderChangeFemale}
               />
             </div>
@@ -364,6 +368,7 @@ const Profile = () => {
               type="email"
               placeholder={email}
               value={email}
+              name="emailinput"
               onChange={(e) => setemail(e.target.value)}
             />
           </div>
@@ -397,6 +402,7 @@ const Profile = () => {
             ref={CurrentP}
             type={ShowPassword ? "text" : "password"}
             value={CurrentPassword}
+            name="passinput"
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
         </div>
@@ -406,6 +412,7 @@ const Profile = () => {
           <input
             type={ShowPassword ? "text" : "password"}
             ref={NewP}
+            name="newpassinput"
             value={newPassword}
             onChange={(e) => setnewPassword(e.target.value)}
           />
@@ -420,6 +427,7 @@ const Profile = () => {
           <input
             type="checkbox"
             ref={ShowPassref}
+            name="showpasscheckbox"
             onClick={() => setShowPassword(!ShowPassword)}
           />
           <span>Show Password</span>

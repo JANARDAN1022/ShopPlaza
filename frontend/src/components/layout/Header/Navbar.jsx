@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
@@ -14,13 +14,17 @@ import { mark } from "react-icons-kit/iconic/mark";
 import { download } from "react-icons-kit/iconic/download";
 import { RxCross2 } from "react-icons/rx";
 import { LogoutUser } from "../../../Actions/UserAction";
+import { GETCartitems } from "../../../Actions/CartAction";
+import { useContext } from "react"; 
+import { CheckoutContext } from "../../../Context/CheckoutContext";
+
 
 const Navbar = () => {
   const [Hover, setHover] = useState(false);
   const [keyword, setkeyword] = useState("");
   const Navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const {setSelectedAddress,setPaymentMethod} = useContext(CheckoutContext);
   const SearchHandler = () => {
     if (keyword) {
       const word = keyword.trim();
@@ -30,6 +34,7 @@ const Navbar = () => {
     }
   };
 
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       SearchHandler();
@@ -37,6 +42,10 @@ const Navbar = () => {
   };
 
   const LogoutHandler = ()=>{
+    sessionStorage.removeItem('selectedAddress');
+    sessionStorage.removeItem('paymentMethod');
+    setSelectedAddress(null);
+    setPaymentMethod(null);
    dispatch(LogoutUser());
   }
 
@@ -44,6 +53,13 @@ const Navbar = () => {
 
   const { cartItems } = useSelector((state) => state.cart);
   const Items = cartItems?.length;
+  const userId = user?._id;
+  
+  useEffect(()=>{
+    if(userId){
+dispatch(GETCartitems(userId))
+    }
+  },[dispatch,userId])
 
   return (
     <div className="NavMain">
@@ -64,6 +80,7 @@ const Navbar = () => {
           onChange={(e) => setkeyword(e.target.value)}
           value={keyword}
           type="search"
+          name="SearchBar"
           placeholder="Search for products, brands and more"
           onKeyDown={handleKeyPress}
         />

@@ -21,11 +21,11 @@ const Login = () => {
 
   
 
-  const redirect = window.location.search?window.location.search.split("=")[1]:'';
+  const redirect =window.location.search.split("=")[1];
 useEffect(()=>{
  
   
-    if(isAuthenticated){
+    if(isAuthenticated && redirect){
     Navigate(`/${redirect}`);
   }
   },[dispatch,isAuthenticated,Navigate,redirect])

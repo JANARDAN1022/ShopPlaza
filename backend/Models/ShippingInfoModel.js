@@ -28,6 +28,10 @@ const ShippingInfoSchema = new mongoose.Schema({
         type:Number,
         unique:true,
     },
+    email:{
+        type:String,
+        required:[true,'Please Enter Your Email'],
+    },
     PlaceType:{
         type:String,
         required:[true,'Please Enter PlaceType']

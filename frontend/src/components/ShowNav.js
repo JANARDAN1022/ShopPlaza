@@ -1,12 +1,18 @@
 import { useLocation } from 'react-router-dom';
 import Navbar from './layout/Header/Navbar';
 
+
 const ShowNav = () => {
   const location = useLocation();
-  const hideNav = location.pathname === '/Checkout';
+  const Location= location.pathname;
+  const productId = Location.split("/")[2];
+  const hideNav = Location === '/Checkout' || Location==='/Confirmation' || Location==='/process/payment';
+
 
   if (hideNav) {
     return null; // Return null to hide the navbar
+  }else if(productId && Location===`/BuyNow/${productId}`){
+    return null;
   }
 
   return <Navbar />;

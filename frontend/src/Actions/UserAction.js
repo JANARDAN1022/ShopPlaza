@@ -63,7 +63,7 @@ export const RegisterUser = (FirstName,SecondName,email,password,gender)=>async(
 
 
 //Remember And Load User On Refresh/Load
-export const LoaodUser = ()=>async(dispatch)=>{
+export const LoadUser = ()=>async(dispatch)=>{
     try{
         dispatch({type:LOAD_REQUEST});
 

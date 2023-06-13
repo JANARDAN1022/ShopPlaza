@@ -19,7 +19,7 @@ const ProductClick = (id)=>{
         
         <div className="ProductSlidecontainer" onClick={()=>ProductClick(product._id)}>
         <div className="image">
-          <img  src={product?.images[0]?.url} alt={product?.name} /> 
+          <img  src={product?.images[0]?.url} alt={product?.name} loading='lazy' /> 
         </div>
 
         <div className="ProductSlideinfo">

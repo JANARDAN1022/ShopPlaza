@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Cart.css';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
-import {addToCart,removeFromCart} from '../../../Actions/CartAction';
+import {removeFromCart,GETCartitems,UpdateQuantity} from '../../../Actions/CartAction';
+import { GETShippingInfo } from '../../../Actions/ShippingAction';
 import { Icon } from 'react-icons-kit';
 import {ic_clear} from 'react-icons-kit/md/ic_clear';
-import {ic_remove_shopping_cart} from 'react-icons-kit/md/ic_remove_shopping_cart'
+import {ic_remove_shopping_cart} from 'react-icons-kit/md/ic_remove_shopping_cart';
 
 
 const Cart = () => {
@@ -16,13 +17,23 @@ const Cart = () => {
 
 const dispatch = useDispatch();
 const {cartItems}=useSelector(state=>state.cart);
+const {user} = useSelector(state=>state.user);
+const userid = user?._id;
+useEffect(()=>{
+  if(userid){
+  dispatch(GETCartitems(userid));
+  dispatch(GETShippingInfo(userid));
+  }
+ },[dispatch,userid])
+
 
 const handleIncreaseQuantity = (id,quantity,stock)=>{
+ 
   const newQty = quantity + 1;
   if(stock <= quantity){
     return;
   }
-dispatch(addToCart(id,newQty));
+dispatch(UpdateQuantity(id,newQty));
 }
 
 const handleDecreaseQuantity = (id,quantity)=>{
@@ -30,7 +41,7 @@ const handleDecreaseQuantity = (id,quantity)=>{
   if(quantity===1){
     return;
   }
-dispatch(addToCart(id,newQty));
+dispatch(UpdateQuantity(id,newQty));
 }
 
 const handleRemove = (id)=>{
@@ -66,10 +77,10 @@ const checkoutHandler = ()=>{
       
      <div className='CartProductsContainer' >
      {cartItems && cartItems.map((item)=>(
-     <div className='CartItemsContainer' style={{pointerEvents:confirmRemove?'none':''}}  key={item?.product}>
+     <div className='CartItemsContainer' style={{pointerEvents:confirmRemove?'none':''}}  key={item?.ItemId}>
      <div className='CartProducts'>
        <div className='CartProductImage' >
-        <img src={item?.image} alt='Product' />
+        <img src={item?.imgUrl} alt='Product' />
        </div>
 
        <div className='ProductInfo'>
@@ -85,13 +96,13 @@ const checkoutHandler = ()=>{
             <div className='MinusQuantity' style={{display:item?.quantity===1?'none':''}}>
             <span onClick={(e)=>{
               e.preventDefault();
-              handleDecreaseQuantity(item?.product,item?.quantity)}}>-</span>
+              handleDecreaseQuantity(item?._id,item?.quantity)}}>-</span>
            </div>
            <div className='QuantityInput'>
-           <input type='text' readOnly value={item?.quantity} style={{paddingLeft:item?.quantity<10?'5px':'2px',paddingRight:item?.quantity<10?'0px':'3px' }}/>
+           <input type='text' name='itemquantity' readOnly value={item?.quantity} style={{paddingLeft:item?.quantity<10?'5px':'2px',paddingRight:item?.quantity<10?'0px':'3px' }}/>
           </div>
           <div className='PlusQuantity' style={{display:item?.quantity===item?.stock?'none':''}}>
-          <span onClick={()=>handleIncreaseQuantity(item?.product,item?.quantity,item?.stock)} >+</span>
+          <span onClick={()=>handleIncreaseQuantity(item?._id,item?.quantity,item?.stock)} >+</span>
           </div>
          </div>
 
@@ -99,7 +110,7 @@ const checkoutHandler = ()=>{
      </div>
      
      <div className='RemoveProduct'>
-     <button onClick={()=>{setconfirmRemove(true); setconfirmId(item?.product)}}>Remove</button>
+     <button onClick={()=>{setconfirmRemove(true); setconfirmId(item?._id)}}>Remove</button>
     </div>
     </div>
             ))}
@@ -127,8 +138,8 @@ const checkoutHandler = ()=>{
            <span>Price{`(${cartItems?.length} items)`}</span>
            <span>{`Rs${cartItems?.reduce(
               (acc,item)=> acc + item.quantity * item.price,0
-            )}`}</span>
-          </div>
+           )}`}</span>
+                     </div>
 
           <div className='DiscountInfo'>
            <span>Discount</span>
@@ -144,7 +155,7 @@ const checkoutHandler = ()=>{
             <span>Total Amount</span>
             <span>{`Rs${cartItems?.reduce(
               (acc,item)=> acc + item.quantity * item.price,0
-            )}`}</span>
+           )}`}</span>
           </div>
 
           </div>

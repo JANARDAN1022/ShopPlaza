@@ -1,0 +1,126 @@
+.ConfirmationContainer{
+    margin: auto;
+    height: 580px;
+    background-color: white;
+    width: 900px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 8px;
+}
+.ConfirmDetails{
+    background-color:rgba(40, 116, 240,1);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.ConfirmDetails>:nth-child(1){
+    color: white;
+    font-size: 20px;
+    margin: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+    cursor: default;
+}
+.ConfirmDetails>:nth-child(2){
+    margin-right:10px;
+    cursor: pointer;
+    color: white;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+}
+.ConfirmDetails>:nth-child(2):hover{
+    text-decoration: underline;
+    transition: all 300ms ease;
+}
+.ConfirmEmail,.ConfirmPhoneNo,.ConfirmAddress,.ConfirmPaymentMethod{
+    display: flex;
+    flex: 1;
+    border: 1px solid rgba(0,0,0,0.1);
+   }
+.ConfirmEmailLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:1px solid rgba(0,0,0,0.1);
+    flex: 1;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-size: 30px;
+    color: green;
+}
+.ConfirmPhoneNoLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:1px solid rgba(0,0,0,0.1);
+    flex: 1;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-size: 30px;
+    color: green;
+}
+.ConfirmPaymentMethodLeft,.ConfirmAddressLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:1px solid rgba(0,0,0,0.1);
+    flex: 1;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-size: 30px;
+    color: green;
+}
+.ConfirmEmailRight,.ConfirmPhoneNoRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    font-size: 30px;
+    color: #2874f0;
+}
+.ConfirmPaymentMethodRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+    font-size: 30px;
+    gap: 20px;
+}
+.ConfirmAddressRight{
+    display: flex;
+    flex: 2;
+    justify-content: center;
+    color: #2874f0;
+    font-size: 25px;
+    padding-left: 50px;
+    align-items: center;
+}
+.PlaceOrderButton{
+    display: flex;
+    justify-content: center;
+    width: 56vmax;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 20px;
+    background-color: #2874f0;
+}
+.PlaceOrderButton>button{
+    height: 50px;
+    width: 400px;
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 165, 0,0.8);
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.PlaceOrderButton>button:hover{
+    color: white;
+    background-color:orange;
+    transition: all 300ms ease;
+}

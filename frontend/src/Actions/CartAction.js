@@ -1,74 +1,85 @@
 import {ADD_TO_CART,
     REMOVE_CART_ITEMS,
-    ADD_SHIPPING_INFO,
-    FAIL_SHIPPING_INFO,
-    GET_SHIPPING_INFO
+    FAILED_CART,
+    GET_CART_ITEMS,
+    UPDATE_QUANTITY
 } from '../constants/CartConstants';
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api/Products", // replace with your API's base URL
+    baseURL: "http://localhost:5000/api/Cart", // replace with your API's base URL
   });
 
 //ADD TO CART
-export const addToCart = (id,quantity)=> async(dispatch,getState)=>{
+export const addToCart = (userId,ItemId,name,imgUrl,price,quantity,stock)=> async(dispatch)=>{
+    try {
+        
+   //  dispatch({type:REQ_ADD_TO_CART});    
 
-    
-        const {data} = await instance.get(`/product/${id}`);
+        const Route = `/CartItems/${userId}`;
+        const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+        const {data} = await instance.post(Route,{ItemId,name,imgUrl,price,quantity,stock},config);
         dispatch({
             type:ADD_TO_CART,
-            payload: {
-                product: data.product._id,
-                name:data.product.name,
-                price:data.product.price,
-                image:data.product.images[0].url,
-                stock:data.product.stock,
-                quantity,
-            },
+            payload: data.CartItem,
         });
-        
-     localStorage.setItem("cartItems",JSON.stringify(getState().cart.cartItems));
+    }catch (error){
+        dispatch({type:FAILED_CART,payload:error});
+    }    
 }
+
+//GET CART ITEMS
+export const GETCartitems = (id)=>async(dispatch)=>{
+try {
+    const Route = `/CartItems/${id}`;
+    const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+    const {data} = await instance.get(Route,config);
+
+    dispatch({
+        type:GET_CART_ITEMS,
+        payload:data.cartItems,
+    })
+} catch (error) {
+    dispatch({type:FAILED_CART,payload:error});
+}
+}
+
+//Update Quantity
+export const UpdateQuantity=(id,quantity)=>async(dispatch)=>{
+    try {
+        const Route = `/CartItems/${id}`;
+        const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+        const {data} = await instance.put(Route,{quantity},config);
+
+        dispatch({
+         type:UPDATE_QUANTITY,
+         payload:{ ItemId: data.updatedItem.ItemId, quantity: data.updatedItem.quantity },
+        })
+
+    } catch (error) {
+        dispatch({type:FAILED_CART,payload:error});
+    }
+}
+
+
 
 //REMOVE FROM CART
-export const removeFromCart=(id)=>async(dispatch,getState)=>{
+export const removeFromCart=(id)=>async(dispatch)=>{
+   try {
+    const Route = `/CartItems/${id}`;
+    const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+    
+    await instance.delete(Route,config);
+
     dispatch({
         type:REMOVE_CART_ITEMS,
-        payload:id,
-    });
-    localStorage.setItem("cartItems",JSON.stringify(getState().cart.cartItems));
-}
+        payload:id
+    })
+   } catch (error) {
+    dispatch({type:FAILED_CART,payload:error});
+   }
+ }
 
-//ADD ShippingInfo
-export const AddShippingInfo=(userId,address,city,state,pincode,phoneNo,PlaceType)=>async(dispatch)=>{
-    try {
-    const Route = `http://localhost:5000/api/ShippingInfo/${userId}`;
-    const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
-    const {data} = await axios.post(Route,{address,city,state,pincode,phoneNo,PlaceType},config)
 
-        dispatch({
-            type:ADD_SHIPPING_INFO,
-            payload:data.shippingAddress,
-        });     
-    } catch (error) {
-        dispatch({type:FAIL_SHIPPING_INFO,payload:error.response.data.message});
-    }
-   
-}
 
-//Get ShippingInfo
-export const GETShippingInfo=(userId)=>async(dispatch)=>{
-    try {
-    const Route = `http://localhost:5000/api/ShippingInfo/${userId}`;
-    const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
-    const {data} = await axios.get(Route,config);
 
-        dispatch({
-            type:GET_SHIPPING_INFO,
-            payload:data.shippingInfo,
-        });     
-    } catch (error) {
-        dispatch({type:FAIL_SHIPPING_INFO,payload:error.response.data.message});
-    }
-   
-}

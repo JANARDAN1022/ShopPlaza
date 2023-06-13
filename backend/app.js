@@ -4,6 +4,8 @@ const errorHandler = require('./middlewares/ErrorHandler');
 const UserRoute = require('./Routes/UserRoute');
 const ProductRoute = require('./Routes/ProductRoute');
 const ShippingInfoRoute = require('./Routes/ShippingInfoRoute.js');
+const CartRoute = require('./Routes/CartRoute.js');
+const PaymentRoute = require('./Routes/PaymentRoute.js');
 const cookieParser = require('cookie-parser');
 const fileupload = require('express-fileupload');
 const cors = require('cors');
@@ -31,6 +33,8 @@ app.use(fileupload());
 app.use("/api/users/",UserRoute);
 app.use("/api/Products/",ProductRoute);
 app.use("/api/",ShippingInfoRoute);
+app.use("/api/Cart/",CartRoute);
+app.use("/api/Payment/",PaymentRoute);
 
 app.use(errorHandler);
 
