@@ -37,6 +37,9 @@ export const Userreducer = (state={user: {}},action)=>{
                     isAuthenticated:true,
                     user: action.payload,
                 };
+
+                
+
                
                     
             case LOGIN_FAIL:

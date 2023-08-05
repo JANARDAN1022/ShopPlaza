@@ -29,6 +29,20 @@ const CartSchema = new mongoose.Schema({
        stock:{
         type:Number,
         required:[true,'Enter Product Stock'] 
+       },
+       SellerInfo:{
+             ID:{ 
+              type:mongoose.Schema.Types.ObjectId,
+             },
+             BuisnessName:{
+              type:String,
+             },
+             FullName:{
+              type:String,
+             },
+             Email:{
+              type:String,
+             }
        }
 });
 

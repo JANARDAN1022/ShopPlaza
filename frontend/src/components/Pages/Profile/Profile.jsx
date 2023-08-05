@@ -44,6 +44,11 @@ const Profile = () => {
   const id = user?._id;
 
   const FirstNameChange = (e) => {
+    if(e.target.value.length<3){
+      FirstNref.current.style.outlineColor ="red";
+    }else{
+      FirstNref.current.style.outlineColor ="lime";
+    }
     setUserInfo((prevstate) => ({
       ...prevstate,
       FirstName: e.target.value,
@@ -51,16 +56,28 @@ const Profile = () => {
   };
 
   const SecondNameChange = (e) => {
+    if(e.target.value.length<3){
+      SecondNref.current.style.outlineColor ="red";
+    }else{
+      SecondNref.current.style.outlineColor ="lime";
+    }
     setUserInfo((prevstate) => ({
       ...prevstate,
       SecondName: e.target.value,
     }));
   };
+ 
+
 
   const HandleUpdateEmail = () => {
-    if (email === "") {
+    const TestEmail = email.split('@');
+    if (email === "" || TestEmail.length===1 || TestEmail.length>2) {
       Emailref.current.focus();
+      if(email===''){
       seterror("Email Cannot Be Empty");
+      }else{
+        seterror("Pleae Enter A Vaild Email")
+      }
       setTimeout(() => {
         seterror("");
       }, 3000);
@@ -74,44 +91,65 @@ const Profile = () => {
       setShowAccountedit(false);
     }
   };
+ 
 
   useEffect(() => {
     if (user?.gender === "Male") {
       Maleref.current.checked = true;
+      Femaleref.current.checked= false;
     } else {
       Femaleref.current.checked = true;
+      Maleref.current.checked = false;
     }
   }, [user?.gender, Maleref, Femaleref]);
+  
 
   const HandleGenderChangeMale = () => {
+    Maleref.current.checked=true;
+    Femaleref.current.checked=false;
     if (Maleref.current.checked === true) {
       Femaleref.current.checked = false;
       setUserInfo((prevstate) => ({
         ...prevstate,
         gender: "Male",
       }));
+   
     }
   };
   const HandleGenderChangeFemale = () => {
+    Maleref.current.checked=false;
+    Femaleref.current.checked=true;
     if (Femaleref.current.checked === true) {
       Maleref.current.checked = false;
       setUserInfo((prevstate) => ({
         ...prevstate,
         gender: "Female",
       }));
+     
     }
   };
 
   const HandlePersonalUpdate = () => {
-    if (UserInfo.FirstName === "" || UserInfo.FirstName.length < 3) {
+   
+    if (UserInfo?.FirstName === "" || UserInfo?.FirstName?.length < 3) {
       FirstNref.current.focus();
+      FirstNref.current.style.outlineColor ="red";
+      if(UserInfo?.FirstName===""){
+       seterror("FirstName Cannot be Empty");
+      }else{
       seterror("FirstName Should Be Atleast 3 Letters");
+      }
       setTimeout(() => {
         seterror("");
       }, 3000);
-    } else if (UserInfo.SecondName === "" || UserInfo.SecondName.length < 3) {
+    } else if (UserInfo?.SecondName === "" || UserInfo?.SecondName?.length < 3) {
       SecondNref.current.focus();
-      seterror("LastName Should Be Atleast 3 Letters");
+      SecondNref.current.style.outlineColor ="red";
+      if(UserInfo?.SecondName===""){
+        seterror("LastName Cannot be Empty");
+       }else{
+       seterror("LastName Should Be Atleast 3 Letters");
+       }
       setTimeout(() => {
         seterror("");
       }, 3000);
@@ -119,16 +157,16 @@ const Profile = () => {
       dispatch(
         PersonalInfoUpdate(
           id,
-          UserInfo.FirstName,
-          UserInfo.SecondName,
-          UserInfo.gender
+          UserInfo?.FirstName,
+          UserInfo?.SecondName,
+          UserInfo?.gender
         )
       );
       setShowPersonalEdit(false);
     }
   };
 
-  const HandlePasswordUpdate = () => {
+  const HandlePasswordUpdate =async() => {
     if (CurrentPassword === "") {
       CurrentP.current.focus();
     } else if (newPassword === "") {
@@ -141,17 +179,25 @@ const Profile = () => {
         seterror("");
       }, 3000);
     } else if (CurrentPassword.length < 8 || newPassword.length < 8) {
-      seterror("Password Should be of Atleast 8 letters");
+      if(CurrentPassword.length<8){
+        seterror("CurrentPassword Should be of Atleast 8 letters");
+        CurrentP.current.focus();
+      }else{
+        seterror("New Password Should be of Atleast 8 letters");
+        NewP.current.focus();
+      }
       setTimeout(() => {
         seterror("");
       }, 3000);
     } else if (CurrentPassword === newPassword) {
+      NewP.current.focus();
       seterror("NewPassword Cannot Be Same As CurrentPassword");
       setTimeout(() => {
         seterror("");
       }, 3000);
     } else {
-      dispatch(PasswordInfoUpdate(id, CurrentPassword, newPassword));
+      const response =  await dispatch(PasswordInfoUpdate(id, CurrentPassword, newPassword))
+        if (response.success) {
       setSuccess("Password Changed Successfully");
       setTimeout(() => {
         setSuccess("");
@@ -162,7 +208,14 @@ const Profile = () => {
       setTimeout(() => {
         setShowPasswordedit(false);
       }, 300);
+    }else{
+      CurrentP.current.focus();
+      seterror(response.message);
+      setTimeout(() => {
+        seterror('');
+      }, 3000);
     }
+  }
   };
 
   return (

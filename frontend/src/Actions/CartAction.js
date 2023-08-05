@@ -11,14 +11,14 @@ const instance = axios.create({
   });
 
 //ADD TO CART
-export const addToCart = (userId,ItemId,name,imgUrl,price,quantity,stock)=> async(dispatch)=>{
+export const addToCart = (userId,ItemId,name,imgUrl,price,quantity,stock,SellerInfo)=> async(dispatch)=>{
     try {
         
    //  dispatch({type:REQ_ADD_TO_CART});    
 
         const Route = `/CartItems/${userId}`;
         const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
-        const {data} = await instance.post(Route,{ItemId,name,imgUrl,price,quantity,stock},config);
+        const {data} = await instance.post(Route,{ItemId,name,imgUrl,price,quantity,stock,SellerInfo},config);
         dispatch({
             type:ADD_TO_CART,
             payload: data.CartItem,

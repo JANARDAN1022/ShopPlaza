@@ -6,14 +6,10 @@ const Cart = require('../Models/CartModel.js');
 
 //Add To Cart
 exports.AddToCart = catchasyncerror(async(req,res,next)=>{
-const {ItemId,name,imgUrl,price,quantity,stock} = req.body;
+const {ItemId,name,imgUrl,price,quantity,stock,SellerInfo} = req.body;
 const Id = req.params.id;
 
-const AlreadyExists = await Cart.findOne({ItemId});
-
-
-
-
+const AlreadyExists = await Cart.findOne({ItemId}); 
 if(!AlreadyExists){
 const CartItem = await Cart.create({
     userId:Id,
@@ -22,7 +18,13 @@ const CartItem = await Cart.create({
     imgUrl,
     price,
     quantity,
-    stock
+    stock,
+    SellerInfo:{
+        ID:SellerInfo._id,
+        BuisnessName:SellerInfo.BuisnessName,
+        FullName:SellerInfo.FullName,
+        Email:SellerInfo.SellerEmail,
+    },
 });
 
     res.status(200).json({success:true,CartItem});
@@ -40,9 +42,9 @@ if(!cartItems){
     next({message:"NoT Found Try Again With Correct Details",statusCode:404});
 }
 
-if(cartItems.length<1){
+/*if(cartItems.length<1){
     next({message:"No Items in Cart, Add to see Items",statusCode:200});
-}
+}*/
 
 res.status(200).json({success:true,cartItems});
 

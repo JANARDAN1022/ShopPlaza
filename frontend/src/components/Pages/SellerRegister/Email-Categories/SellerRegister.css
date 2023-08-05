@@ -1,0 +1,180 @@
+.SellerRegisterMain{
+    background-color: white;
+}
+.SRcontainer{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.SRnav{
+    display: flex;
+    padding: 20px;
+}
+.SRnavContainer{
+    display: flex;
+    width: 100%;
+    gap: 50px;
+}
+.SRnavLeft{
+    width: 200px;
+}
+.SRnavLeft>h3{
+    cursor: pointer;
+    margin:0;
+    align-self: flex-end;
+    font-size: 24px;
+}
+.SRnavLeft>h3>a{
+    color:#2874f0;
+    text-decoration: none;
+}
+.SRnavMiddle{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.EmailMiddle,.PasswordMiddle,.DashBoardMiddle{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.EmailMiddle{
+    font-weight: 600;
+}
+.PasswordMiddle,.DashBoardMiddle{
+    color: rgb(96, 112, 128);
+}
+.Dash{
+    display: flex;
+    align-items: center;
+    color: rgb(193, 199, 208);
+}
+.SellerInputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 300px;
+    padding-top: 20px;
+}
+
+.SellerEmailInput{
+display: flex;
+gap: 10px;
+width: 500px;
+padding: 10px;
+font-size: 18px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.RequiredMark{
+    color: red;
+    position: absolute;
+    right: 57.3%;
+}
+
+.SellerEmailInput>input{
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 40px;
+    width: 300px;
+    padding-left: 20px;   
+}
+.CategorySelection{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.CategorySelection>span{
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 0.5px;
+}
+.AvailableCategories{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 550px;
+    height: 300px;
+    padding: 20px;
+}
+.AvailableCategories>*{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-weight: 600;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 1px solid rgb(96, 112, 128);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.AvailableCategories>*:hover{
+    transition: all 300ms ease;
+    border-color: rgb(0, 102, 204);
+    color: white;
+    background-color: rgba(0, 102, 204,0.2);
+}
+.RegisterSeller{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+.RegisterSeller>svg{
+    cursor: pointer;
+    position: absolute;
+    right: 55%;
+    color: white;
+}
+.RegisterSellerBTN{
+    margin-left: 100px;
+    width: 280px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 102, 204);
+    color: rgba(255,255,255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+.WhySell{
+    display: flex;
+    background-color: rgba(52, 152, 219,0.1);
+}
+.WhySellContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.WhySellContainer>h1{
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-size: 32px;
+    color: rgb(61,70,77);
+    text-align: center;
+}
+.ReasonsForWhy{
+    height: 81%;
+    display: grid;
+    grid-template-columns:auto auto auto auto;
+    gap: 20px 60px;
+    padding-left: 90px;
+    padding-bottom: 40px;
+}
+
+.Reason{
+  display: flex;
+  flex-direction: column;
+}
+
+.Reason>span{
+    width: 230px;
+    font-size: 17px;
+}
+.WhySellImage>img{
+    width: 70px;
+    height: 70px;
+}

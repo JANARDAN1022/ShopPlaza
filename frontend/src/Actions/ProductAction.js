@@ -61,7 +61,7 @@ export const getCategories = (category,currentPage) => async (dispatch) => {
   }
 };
 
-export const getSimilarProducts = (productId,price =[0,100000],minRating) => async (dispatch) => {
+export const getSimilarProducts = (productId,price=[0,100000],minRating) => async (dispatch) => {
   try {
     dispatch({ type: ALL_SIMILARCATEGORIES_REQUEST });
     const route = `/similar/${productId}?price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${minRating}`
@@ -71,6 +71,7 @@ export const getSimilarProducts = (productId,price =[0,100000],minRating) => asy
       type: ALL_SIMILARCATEGORIES_SUCCESS,
       payload: data,
     });
+    console.log(data);
   } catch (error) {
     dispatch({
       type: ALL_SIMILARCATEGORIES_FAIL,

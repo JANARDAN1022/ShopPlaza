@@ -345,12 +345,19 @@
     color: orange;
 }
 
-.PickAddress>span{
+.PickAddress>:nth-child(2){
     color: rgba(255, 99, 71,0.7);
     cursor: pointer;
 }
-.PickAddress>span:hover{
+.PickAddress>:nth-child(3){
+    color: rgba(40, 116, 240,0.6);
+}
+.PickAddress>:nth-child(2):hover{
     color: red;
+    transition: all 300ms ease;
+}
+.PickAddress>:nth-child(3):hover{
+    color: #2874f0;
     transition: all 300ms ease;
 }
 
@@ -461,7 +468,7 @@ color: #2874f0;
     font-size: 18px;
 }
 .OrderHeadPrice{
-    margin-right:10px;
+    margin-right:25px;
 }
 .CartItemsInfo{
     display: flex;
@@ -513,7 +520,7 @@ color: #2874f0;
     display: flex;
     align-items: center;
     gap: 70px;
-    width: 180px;
+    width: 200px;
 }
 .OrderitemsQuantity{
     padding: 10px;
@@ -632,7 +639,20 @@ margin-left: 50px;
     padding: 20px;
     box-shadow: 4px 3px 4px rgba(0,0,0,0.2);
 }
-.CreateNewAddressContainer{
+.EditAddressMain{
+    border: 1px solid rgba(0,0,0,0.2);
+    position: absolute;
+    top: 130px;
+    left: 400px;
+    background-color: white;
+    width: 650px;
+    height: 550px;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 4px 3px 4px rgba(0,0,0,0.2);
+
+}
+.CreateNewAddressContainer,.EditAddressContainer{
     display: flex;
     flex-direction: column;
     gap: 18px;

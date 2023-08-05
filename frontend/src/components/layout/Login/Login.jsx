@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect,useRef,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CategoryCommon from '../../Categories/CommonCategory/CategoryCommon';
 import {Link} from 'react-router-dom';
@@ -15,20 +15,26 @@ const Login = () => {
   const [EmailMessage,setEmailMessage]=useState('Your Email');
   const [PasswordMessage,setPasswordMessage]=useState('Password');
   const [errorMessage,seterrorMessage]=useState('');
+  const EmailRef = useRef();
+  const PassRef = useRef();
   const Navigate = useNavigate();
   const dispatch = useDispatch();
-  const {error,loading,isAuthenticated}=useSelector(state=>state.user);
-
+  const {error,loading,isAuthenticated,user}=useSelector(state=>state.user);
+const Role =  user?.role;
   
 
   const redirect =window.location.search.split("=")[1];
-useEffect(()=>{
- 
-  
-    if(isAuthenticated && redirect){
-    Navigate(`/${redirect}`);
+useEffect(()=>{  
+   if(isAuthenticated && redirect){
+      if(redirect==='/DashBoard' && Role==='user'){
+    Navigate(`/RegisterAsSeller`);
+      }else{
+        Navigate(`/${redirect}`);
+      }
+  }else if(isAuthenticated && !redirect){
+    Navigate('/');
   }
-  },[dispatch,isAuthenticated,Navigate,redirect])
+  },[dispatch,isAuthenticated,Navigate,redirect,Role])
 
 
   const HandleLogin = (e)=>{
@@ -53,11 +59,15 @@ useEffect(()=>{
         }
 
     if(Email==="" && Password===""){
+      EmailRef.current.focus();
       setEmailMessage('Email  Cannot Be Empty*');
       setPasswordMessage('Password Cannot Be Empty*');
     }else if(Email===""){
+      EmailRef.current.focus();
     setEmailMessage('This Field Cannot Be Empty*')
     }else if(Password===""){
+      PassRef.current.focus();
+      PassRef.current.style.outlineColor="red";
       setPasswordMessage('This Field Cannot Be Empty*')
     } 
   }
@@ -87,11 +97,11 @@ useEffect(()=>{
             <div className="LoginRightDivcontainer">
           <form className='LoginForm' >
             <div className="EmailInput">
-          <input autoComplete='off'  value={Email} name='Email' placeholder={EmailMessage} type='email' onChange={(e)=>setEmail(e.target.value)}/>
+          <input  ref={EmailRef} autoComplete='off'  value={Email} name='Email' placeholder={EmailMessage} type='email' onChange={(e)=>setEmail(e.target.value)}/>
           </div>
 
          <div className="PasswordInput"> 
-          <input autoComplete='off' value={Password}  placeholder={PasswordMessage} name='Password' type='password' onChange={(e)=>setPassword(e.target.value)}/>
+          <input ref={PassRef} autoComplete='off' value={Password}  placeholder={PasswordMessage} name='Password' type='password' onChange={(e)=>setPassword(e.target.value)}/>
           </div>
           <span>{errorMessage}</span>
           <button className='LoginButton' onClick={HandleLogin}>Login</button>

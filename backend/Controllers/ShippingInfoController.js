@@ -43,6 +43,22 @@ exports.GetUsersShippingInfo = catchasyncerror(async(req,res,next)=>{
     }
 });
 
+//Update/Edit Address
+exports.UpdateShippingInfo = catchasyncerror(async(req,res,next)=>{
+    const Id = req.params.id;
+    const Info = req.body;
+    const Infoexists = await ShippingInfo.findById(Id);
+    if(!Infoexists){
+        next({message:'Invalid Id Or Infor Doesnt Exist Try Again Or Add New Info First',statusCode:404})
+    }
+    const UpdatedInfo = await ShippingInfo.findByIdAndUpdate(Id, Info, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+      });
+      res.status(200).json({success:true,UpdatedInfo});
+});
+
 //Delete Address
 exports.DeleteShippingInfo = catchasyncerror(async(req,res,next)=>{
     const Id = req.params.id;

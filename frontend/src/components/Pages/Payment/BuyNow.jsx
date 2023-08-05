@@ -141,7 +141,7 @@ const Payment = () => {
 
   const HandleProceedToPay = () => {
     if (selectedAddress !== null && paymentMethod!==null) {
-      Navigate(`/Confirmation`);
+      Navigate(`/Confirmation?${productId}`);
     } else if (selectedAddress === null) {
       if (shippingInfo?.length > 0) {
         setChangeAddress(true);
@@ -366,7 +366,7 @@ const Payment = () => {
         </div>
 
         <div className="PaymentRight">
-          <div className="OrderPaymentInfo">
+          <div className="OrderBuyNowPaymentInfo">
             <div className="OIPHead">
               <div className="OIPHEADdiv">
                 <BsFillBagFill size={40} />
@@ -374,7 +374,7 @@ const Payment = () => {
               </div>
             </div>
 
-            <div className="OrderProducts">
+            <div className="OrderBuyNowProducts">
               <div className="orderProductsHead">
                 <div className="ItemDescriptionhead">
                   <span>ITEMS DESCRIPTION</span>
@@ -386,8 +386,8 @@ const Payment = () => {
                 </div>
               </div>
 
-              <div className="CartItemsInfo">
-                <div className="OrderItems">
+              <div className="BuyNowCartItemsInfo">
+                <div className="OrderBuyNowItems">
                       <div className="OrderItemsContainer">
                         <div className="OrederitemsLeft">
                           <div className="OrderItemImage">

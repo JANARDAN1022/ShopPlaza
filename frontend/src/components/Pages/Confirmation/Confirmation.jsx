@@ -1,4 +1,4 @@
-import {React,useContext,useState} from 'react';
+import {React,useContext,useEffect,useState} from 'react';
 import './Confirmation.css';
 import {BsCheckAll,BsStripe} from 'react-icons/bs';
 import { TbCash } from "react-icons/tb";
@@ -6,13 +6,69 @@ import {CheckoutContext} from '../../../Context/CheckoutContext';
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import '../Payment/Payment.css';
 import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Confirmation = () => {
   const {selectedAddress,paymentMethod} = useContext(CheckoutContext);
+  const { cartItems } = useSelector((state) => state.cart);
   const {user} = useSelector(state=>state.user);
   const [rotate, setrotate] = useState(false);
+  const [Data,setData]=useState(null);
+  const Location = useLocation();
+  const ProductId = Location.search?.split('?')[1];
+  const UserId = user?._id;
   const Navigate = useNavigate();
+
+const FetchSingleTotal = async()=>{
+  if(ProductId){
+    const {data} = await axios.get(`http://localhost:5000/api/Payment/FinalAmount/${UserId}?productId=${ProductId}`);
+    setData(data?.ToBePaid);
+  }else{
+    const {data} = await axios.get(`http://localhost:5000/api/Payment/FinalAmount/${UserId}`)
+    setData(data?.ToBePaid);
+  }
+}
+
+const HandlePlaceOrder = async()=>{
+if(ProductId){
+  try {
+ const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+ await axios.post(`http://localhost:5000/api/Orders/NewOrder/${UserId}`,{Shippinginfo:selectedAddress,ProductId:ProductId},config);
+    if(paymentMethod==='Cash'){
+      Navigate('/orderPlaced')
+    }else{
+      Navigate('/process/payment');
+    } 
+  } catch (error) {
+   console.log(error); 
+   }
+
+  }else{
+    try {
+      const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+      await axios.post(`http://localhost:5000/api/Orders/NewOrders/${UserId}`,{Shippinginfo:selectedAddress,CartItems:cartItems},config);
+         if(paymentMethod==='Cash'){
+           Navigate('/orderPlaced')
+         }else{
+           Navigate('/process/payment');
+         } 
+       } catch (error) {
+        console.log(error); 
+        }
+  }
+}
+
+  useEffect(()=>{
+   FetchSingleTotal();
+  })
+  const HandleConfirmEdit = ()=>{
+    if(ProductId){
+     Navigate(`/BuyNow/${ProductId}`);
+    }else{
+     Navigate(`/Checkout`);
+    }
+  }
 
   return (
     <div className='ConfirmationMain'>
@@ -51,7 +107,7 @@ const Confirmation = () => {
       <div className='ConfirmationContainer'>
         <div className='ConfirmDetails'>
           <span>Confirm Details</span>
-        <span onClick={()=>Navigate('/Checkout')}>Edit</span>
+        <span onClick={HandleConfirmEdit}>Edit</span>
         </div>
         <div className='ConfirmEmail'>
          
@@ -85,7 +141,9 @@ const Confirmation = () => {
          </div>
 
          <div className='ConfirmAddressRight'>
+          <div className='ConfirmAddressRightContainer'>
           <span>{selectedAddress?.address}</span>
+          </div>
          </div>
         </div>
 
@@ -101,14 +159,21 @@ const Confirmation = () => {
          </div>
         </div>
 
+        <div className='TotalPayableAmount'>
+        <div className='TotalConfLeft'>
+          <span>Amount To Be Paid</span>
+          <BsCheckAll size={50} />
+        </div>
+        <div className='TotalConfRight'>
+          <span>Rs {Data}</span>
+        </div>
+        <div>
+
+        </div>
+        </div>
+
         <div className='PlaceOrderButton'>
-          <button onClick={()=>{
-            if(paymentMethod==='Cash'){
-              Navigate('/orderPlaced')
-            }else{
-              Navigate('/process/payment');
-            }
-          }}>Place Order</button>
+          <button onClick={HandlePlaceOrder}>Place Order</button>
         </div>
 
 

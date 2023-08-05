@@ -17,6 +17,7 @@ import { LogoutUser } from "../../../Actions/UserAction";
 import { GETCartitems } from "../../../Actions/CartAction";
 import { useContext } from "react"; 
 import { CheckoutContext } from "../../../Context/CheckoutContext";
+import { SellerContext } from "../../../Context/SellerContext";
 
 
 const Navbar = () => {
@@ -25,6 +26,7 @@ const Navbar = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const {setSelectedAddress,setPaymentMethod} = useContext(CheckoutContext);
+  const {AlreadySeller} = useContext(SellerContext);
   const SearchHandler = () => {
     if (keyword) {
       const word = keyword.trim();
@@ -51,15 +53,30 @@ const Navbar = () => {
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
+
+
+
   const { cartItems } = useSelector((state) => state.cart);
   const Items = cartItems?.length;
   const userId = user?._id;
+  const UserRole = user?.role;
   
   useEffect(()=>{
     if(userId){
 dispatch(GETCartitems(userId))
     }
   },[dispatch,userId])
+
+  const HandleBecomeASeller = ()=>{
+    if(user===null){
+      Navigate(`/Login?redirect=DashBoard`);
+    }else 
+    if(UserRole==='user'){
+      Navigate('/RegisterAsSeller')
+    }else{
+      Navigate('/DashBoard');
+    }
+  }
 
   return (
     <div className="NavMain">
@@ -102,7 +119,7 @@ dispatch(GETCartitems(userId))
         <div className="containerforlogin">
           <Link to={isAuthenticated ? "/MyAccount" : "/Login"}>
             <button onClick={() => setHover(false)}>{`${
-              isAuthenticated ? user.FirstName : "Login"
+              isAuthenticated ? user?.FirstName : "Login"
             }`}</button>
           </Link>
 
@@ -152,7 +169,7 @@ dispatch(GETCartitems(userId))
             </div>
           </div>
         </div>
-        <h4>Become a Seller</h4>
+        <h4 onClick={HandleBecomeASeller}>{UserRole==='user' || user===null || AlreadySeller?'Become a Seller':'Dash-Board'}</h4>
         <div
           className="containerforMore"
           onMouseEnter={() => setHover(!Hover)}

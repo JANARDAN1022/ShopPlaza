@@ -18,7 +18,7 @@ exports.createProduct = catchasyncerror(async (req, res) => {
 
 //get Product Details
 exports.getProductDetail = catchasyncerror(async (req, res, next) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id).populate('SellerInfo','SellerEmail FullName BuisnessName');;
   if (!product) {
     return next({ message: 'Product not found', statusCode: 404 });
   }
@@ -36,7 +36,7 @@ exports.geAllProducts = catchasyncerror(async (req, res) => {
   feature.search()
   feature.filter()
   //feature.paginate();
-  const products = await feature.paginate(limit);
+  const products = await feature.paginate(limit).populate('SellerInfo','SellerEmail FullName BuisnessName');
 
   res.status(200).json({ success: true, products, productcount, limit });
 });
@@ -47,7 +47,7 @@ exports.getProductsByCategory = catchasyncerror(async (req, res) => {
   const category = req.params.category;
   const productcount = await Product.countDocuments({ category }); // count products that match the category filter
   const feature = apifeature(Product.find({ category }),req.query);
-  const products = await feature.paginate(limit);
+  const products = await feature.paginate(limit).populate('SellerInfo','SellerEmail FullName BuisnessName');
  //const products = await Product.find({category});
   res.status(200).json({ success: true, products ,productcount});
 });
@@ -61,17 +61,32 @@ exports.getSimilarProducts = catchasyncerror(async (req, res) => {
   if (!product) {
     return res.status(404).json({ success: false, message: "Product not found" });
   }
-  
+
   const feature = apifeature(Product.find(
     { $text: { $search: product.name } },
     { score: { $meta: 'textScore' } }
   ).sort({score : {$meta: 'textScore'}}) ,req.query);
   feature.filter();
 
-  const relatedProducts = await feature.paginate(21);
-
+  const relatedProducts = await feature.paginate(21).populate('SellerInfo','SellerEmail FullName BuisnessName');;
+  const MaxAmount = Math.max(...relatedProducts.map((P)=>P.price));
     
-    res.status(200).json({ success: true, relatedProducts });
+    res.status(200).json({ success: true, relatedProducts,MaxAmount });
+});
+
+//Update All Products
+exports.UpdateAll = catchasyncerror(async(req,res,next)=>{
+
+const sellerId = req.params.id; // Provide the SellerId in the request body or use any other means to obtain it
+const {Category} = req.body; // Array of product IDs to update and populate
+
+// Update the products with the provided sellerId
+const Products = await Product.updateMany(
+  { category:Category },
+  { SellerInfo: sellerId }
+);
+
+res.status(200).json({ success: true,message:'Updated',Products});
 });
 
 
@@ -93,8 +108,10 @@ exports.updateProduct = catchasyncerror(async (req, res, next) => {
     product
   })
 });
-//delete product
 
+
+
+//delete product
 exports.deleteProduct = catchasyncerror(async (req, res) => {
 
   const product = await Product.findById(req.params.id);
@@ -108,3 +125,4 @@ exports.deleteProduct = catchasyncerror(async (req, res) => {
       message: "product deleted successfully"
     })
 });
+

@@ -67,6 +67,10 @@ const productSchema = new mongoose.Schema({
     createdAt:{
         type:Date,
         default:Date.now
+    },
+    SellerInfo:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Seller',
     }
 })
 

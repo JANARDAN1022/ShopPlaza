@@ -1,4 +1,4 @@
-const ErrorHandler = require('../middlewares/ErrorHandler');
+//const ErrorHandler = require('../middlewares/ErrorHandler');
 const catchasyncerror = require('../middlewares/AsyncError');
 const User = require('../Models/UserModel');
 const sendtoken = require('../utils/JWTtoken');
@@ -6,7 +6,7 @@ const sendEmail = require('../utils/SendEmail.js');
 
 
 
-
+//Register User
 exports.RegisterUser = catchasyncerror(async (req, res, next) => {
     const { FirstName,SecondName, email, password,gender } = req.body;
     const user = await User.create({
@@ -19,6 +19,9 @@ exports.RegisterUser = catchasyncerror(async (req, res, next) => {
     sendtoken(user, 201, res);
   });
   
+
+
+
 
 //login user
 
@@ -63,7 +66,6 @@ exports.logout = catchasyncerror(async (req,res,next)=>{
 
 
 //get userDetails
-
 exports.userDetail = catchasyncerror(async(req,res,next)=>{
     const user = await User.findById(req.user.id);
     res.status(200).json({

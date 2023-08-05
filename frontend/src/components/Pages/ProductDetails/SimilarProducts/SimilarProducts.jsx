@@ -19,10 +19,11 @@ const {productId} = useParams();
 const check3ref = useRef();
 const check4ref =useRef();
 
- 
+const {similarProducts} = useSelector(state => state.products);
+const MaximumAmount = similarProducts && similarProducts.MaxAmount;
+const products = similarProducts && similarProducts.relatedProducts;
  const [minRating,setminRating]=useState(0);
- const [price,setprice]=useState([0,100000]); 
-
+ const [price,setprice]=useState([0,MaximumAmount?MaximumAmount:100000]); 
 
 const dispatch = useDispatch();
 
@@ -44,8 +45,7 @@ const dispatch = useDispatch();
   window.scrollTo(0,0);
  },[dispatch,productId,price,minRating]);
 
- const {similarProducts} = useSelector(state => state.products);
- const products = similarProducts && similarProducts.relatedProducts;
+
 
   return (
     <>
@@ -61,7 +61,7 @@ const dispatch = useDispatch();
          <div className='FILTERHEADS'>
          <h3>Filters</h3>
          <span onClick={()=>{
-          setprice([0,100000]);
+          setprice([0,MaximumAmount?MaximumAmount:100000]);
           setminRating(0);
           check3ref.current.checked=false;
           check4ref.current.checked=false;
@@ -80,7 +80,7 @@ const dispatch = useDispatch();
          <RxCross2 />
          <span>{minRating} & above</span>
          </div>
-         <div className='SelectedFiltersContent' style={{display: price[0]!==0 || price[1]!==100000?'flex':'none'}} onClick={()=>setprice([0,100000])}>
+         <div className='SelectedFiltersContent' style={{display: price[0]!==0 || price[1]!==MaximumAmount?MaximumAmount:100000?'flex':'none'}} onClick={()=>setprice([0,MaximumAmount?MaximumAmount:100000])}>
          <RxCross2 />
          <span>{`${price[0]}-${price[1]}`}</span>
          </div>
@@ -101,7 +101,7 @@ const dispatch = useDispatch();
             <div className='PRICEFILTER'>
             <h4>PRICE</h4>
             <span onClick={()=>{
-             setprice([0,100000]);
+             setprice([0,MaximumAmount?MaximumAmount:100000]);
 
             }} 
             >CLEAR</span>
@@ -116,7 +116,7 @@ const dispatch = useDispatch();
            aria-labelledby='rang-slider'
 
            min={0}
-           max={100000}
+           max={MaximumAmount>100000?MaximumAmount:100000}
                      />
              </Box>
 

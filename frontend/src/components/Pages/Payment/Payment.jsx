@@ -15,19 +15,18 @@ import {
   AddShippingInfo,
   GETShippingInfo,
   DeleteShippingInfo,
+  UpdateShippingInfo
 } from "../../../Actions/ShippingAction";
 
 const Payment = () => {
   const { user } = useSelector((state) => state.user);
   const { cartItems } = useSelector((state) => state.cart);
   const { shippingInfo } = useSelector((state) => state.ShippingInfo);
- // const {selectedAddress,paymentMethod}=useSelector((state)=>state.Checkout);
   const {selectedAddress,setSelectedAddress,paymentMethod,setPaymentMethod}=useContext(CheckoutContext);
   const [rotate, setrotate] = useState(false);
   const [ShowNewAddress, setShowNewAddress] = useState(false);
   const [address, setaddress] = useState("");
   const [ChangeAddress, setChangeAddress] = useState(false);
- // const [selectedAddress, setselectedAddress] = useState(null);
   const [city, setcity] = useState("");
   const [state, setstate] = useState("");
   const [pincode, setpincode] = useState("");
@@ -35,13 +34,28 @@ const Payment = () => {
   const [email, setemail] = useState("");
   const [PlaceType, setPlaceType] = useState("");
   const [showError, setshowError] = useState("");
- // const [StripeMethod, setStripeMethod] = useState(false);
- // const [CashMethod, setCashMethod] = useState(false);
+  const [ShowEdit,setShowEdit]=useState(false);
   const [showPin, setshowPin] = useState(false);
+  const [Data,setData]=useState({
+    userId:null,
+    Id:null,
+    address: "",
+    state:["",""],
+    city: "",
+    pinCode: "",
+    phoneNo: "",
+    email: "",
+    placeType:"",
+  })
   const Navigate = useNavigate();
 
-  const StateName =
-    state !== "" ? State.getStateByCodeAndCountry(`${state}`, "IN")?.name : "";
+  
+  const StateName = state !== "" ? State.getStateByCodeAndCountry(`${state}`, "IN")?.name : "";
+
+
+ 
+
+
   const dispatch = useDispatch();
   const userId = user?._id;
 
@@ -63,7 +77,9 @@ const Payment = () => {
       ? (CartTotal * 2) / 100
       : 0;
 
-  const HandleremoveAddress = (infoid) => {
+
+ 
+ const HandleremoveAddress = (infoid) => {
     if (infoid) {
       dispatch(DeleteShippingInfo(infoid));
     }
@@ -133,6 +149,29 @@ const Payment = () => {
       }
     }
   };
+
+  const HandleEdit = ()=>{
+    if(Data.Id!==null && showError===''){
+      dispatch(UpdateShippingInfo(Data.Id,Data.address,Data.state[0],Data.city,Data.email,Data.phoneNo,Data.pinCode,Data.placeType));
+      if(Data.Id===selectedAddress?._id){
+        setSelectedAddress({
+        userId:Data.userId,
+        address:Data.address,
+        city:Data.city,
+        StateName:Data.state[0],
+        pincode:Data.pinCode,
+        phoneNo:Data.phoneNo,
+        email:Data.email,
+        PlaceType:Data.placeType,
+        _id:Data.Id,
+        });
+      }
+      setTimeout(() => {
+        setShowEdit(false);
+      }, 500);
+    }
+  }
+
 
   useEffect(() => {
     dispatch(GETShippingInfo(userId));
@@ -606,7 +645,7 @@ const Payment = () => {
               </div>
               <div className="PickAddress">
                 <div className="SelectAddressOption">
-                  <label htmlFor={info.phoneNo}>Select Address</label>
+                  <label htmlFor={info?.phoneNo}>Select Address</label>
                   <input
                     value={info}
                     type="radio"
@@ -623,10 +662,154 @@ const Payment = () => {
                 <span onClick={() => HandleremoveAddress(info?._id)}>
                   Remove
                 </span>
+                <span onClick={()=>{
+                  setData({
+                    userId:info?.userId,
+                    Id:info?._id,
+                    address:info?.address,
+                    state:[info?.state,''],
+                    city:info?.city,
+                    email:info?.email,
+                    phoneNo:info?.phoneNo,
+                    pinCode:info?.pincode,
+                    placeType:info?.PlaceType
+                  });
+                  setShowEdit(true);
+                  setChangeAddress(false);
+                  }}>Edit</span>
               </div>
             </div>
           ))}
       </div>
+      <div className="EditAddressMain" style={{display:ShowEdit?'':'none'}}>
+      <div className="EditAddressContainer">
+          <AiOutlineClose
+            size={30}
+            className="CloseNewAddress"
+            onClick={() => setShowEdit(false)}
+          />
+          <span className="AddNewAddressHead">Edit Address</span>
+          <div className="CityStateInfo">
+            <div className="StateSelect">
+              <span>Select Your State :</span>
+              <select
+                value={Data.state}
+                name="selectstate"
+                onChange={(e)=>setData({...Data,state:[State.getStateByCodeAndCountry(e.target.value,"IN")?.name,e.target.value]})}
+              >
+                <option value={Data.state[0]}>{Data.state[0]}</option>
+                {State &&
+                  State.getStatesOfCountry("IN").map((states) => (
+                    <option
+                      key={`STATE_${states.isoCode}`}
+                      value={states.isoCode}
+                    >
+                      {states.name}
+                    </option>
+                  ))}
+              </select>
+            </div>
+
+            <div className="CitySelect">
+              <span>Select Your City :</span>
+              <select
+                name="selectcity"
+                value={Data.city}
+                onChange={(e) => {
+                  setData({...Data, city:e.target.value});
+                }}
+              >
+                <option value={Data.city}>{Data.city}</option>
+                {City &&
+                  City.getCitiesOfState("IN", Data.state[1]).map((cities) => (
+                    <option
+                      key={`CITY_${cities.name}_${cities.longitude}`}
+                      value={cities.isoCode}
+                    >
+                      {cities.name}
+                    </option>
+                  ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="AddressInfo">
+            <span>Shipping Address :</span>
+            <input
+              value={Data.address}
+              onChange={(e) => setData({...Data,address:e.target.value})}
+              placeholder="House-No/Sector/Roadname/Area/NearPlace"
+              name="addressinput"
+            />
+          </div>
+
+          <div className="PincodePhoneNumberInfo">
+            <div className="AddNewAddressPhoneNo">
+              <span>Phone No :</span>
+              <input
+                type="number"
+                value={Data.phoneNo}
+                name="numberinput"
+                placeholder="Enter Your 10 Digit Phone No"
+                onChange={(e) => {
+                  setData({...Data, phoneNo:parseInt(e.target.value)});
+                }}
+              />
+            </div>
+            <div className="AddNewaddresspincode">
+              <span>Pincode :</span>
+              <input
+                type="number"
+                value={Data.pinCode}
+                name="pincodeinput"
+                placeholder={Data.pinCode}
+                onChange={(e) => {
+                  setData({...Data, pinCode:parseInt(e.target.value)});
+                }}
+              />
+            </div>
+          </div>
+          <div className="AddNewAddressEmail">
+            <span>Email :</span>
+            <input
+              type="email"
+              placeholder={Data.email}
+              name="emailInput"
+              value={Data.email}
+              onChange={(e) => setData({...Data,email:e.target.value})}
+            />
+          </div>
+
+          <div className="AddressType">
+            <span
+              onClick={() => setData({...Data,placeType:"office"})}office
+              style={{
+                backgroundColor:
+                  Data.placeType === "office" ? " rgba(40, 116, 240,0.2)" : "",
+                color: Data.placeType === "office" ? "rgb(40,116,240)" : "",
+              }}
+            >
+              Office
+            </span>
+            <span
+              onClick={() => setData({...Data,placeType:"Home"})}
+              style={{
+                backgroundColor:
+                Data.placeType === "Home" ? " rgba(40, 116, 240,0.2)" : "",
+                color: Data.placeType === "Home" ? "rgb(40,116,240)" : "",
+              }}
+            >
+              Home
+            </span>
+          </div>
+          <span className="AddAddresserror" style={{ display: showError !== "" ? "" : "none"}}>
+            {showError}*
+          </span>
+          <div className="SubmitAddressBtn">
+            <button onClick={HandleEdit}>Edit This Address</button>
+          </div>
+          </div>
+        </div>
     </div>
   );
 };

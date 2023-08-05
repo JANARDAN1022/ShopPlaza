@@ -19,6 +19,7 @@ const dispatch = useDispatch();
 const {cartItems}=useSelector(state=>state.cart);
 const {user} = useSelector(state=>state.user);
 const userid = user?._id;
+console.log(cartItems);
 useEffect(()=>{
   if(userid){
   dispatch(GETCartitems(userid));

@@ -11,7 +11,7 @@ const Signup = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
-  const [Gender, setGender] = useState("");
+  const [gender, setGender] = useState("");
   const Maleref = useRef();
   const Femaleref = useRef();
 
@@ -21,61 +21,33 @@ const Signup = () => {
   const redirect = window.location.search?window.location.search.split("=")[1]:'';
   const HandleRegister = (e) => {
     e.preventDefault();
-    if (
-      email !== "" &&
-      password !== "" &&
-      FirstName !== "" &&
-      SecondName !== "" &&
-      Gender === ""
-    ) {
-      seterrorMessage("Please select gender");
+  
+    const isAnyFieldEmpty = email === "" || password === "" || FirstName === "" || SecondName === "";
+    const isGenderNotSelected = gender === "";
+  
+    if (isAnyFieldEmpty || isGenderNotSelected) {
+      const errorMessageText = isGenderNotSelected ? "Please select gender" : "Please Enter All Fields";
+      seterrorMessage(errorMessageText);
       setTimeout(() => {
         seterrorMessage("");
       }, 3000);
-    }
-    if (
-      email === "" ||
-      password === "" ||
-      FirstName === "" ||
-      SecondName === ""
-    ) {
-      seterrorMessage("Please Enter All Fields");
-      setTimeout(() => {
-        seterrorMessage("");
-      }, 3000); // set timeout to 3 seconds
-    }
-
-    if (
-      email !== "" &&
-      password !== "" &&
-      FirstName !== "" &&
-      SecondName !== "" &&
-      Gender !== "" &&
-      !error&&
-      errorMessage===''
-    ) {
-      dispatch(RegisterUser(FirstName, SecondName, email, password, Gender));
+    } else if ((error==="Please login" || !error) && errorMessage === "") {
+      dispatch(RegisterUser(FirstName, SecondName, email, password, gender));
       setFirstName("");
       setSecondName("");
       setemail("");
       setpassword("");
       Navigate(`/${redirect}`);
-    } else {
-      if (
-        error &&
-        email !== "" &&
-        password !== "" &&
-        FirstName !== "" &&
-        SecondName !== "" &&
-        Gender !== ""
-      ) {
-        seterrorMessage("User Already Exists");
-        setTimeout(() => {
-          seterrorMessage("");
-        }, 3000); // set timeout to 3 seconds
-      }
+    } else if (error) {
+      seterrorMessage("User Already Exists");
+      console.log(error);
+      setTimeout(() => {
+        seterrorMessage("");
+      }, 3000);
     }
   };
+  
+  console.log(FirstName, SecondName, email, password, gender);
 
   return loading ? (
     "loading"

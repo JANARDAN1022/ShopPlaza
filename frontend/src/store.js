@@ -5,6 +5,7 @@ import { ProductDetailsReducer, ProductReducer} from './Reducers/ProductReducer'
 import { CartReducer } from './Reducers/CartReducer';
 import { Userreducer } from './Reducers/UserReducer';
 import {ShippingReducer} from './Reducers/ShippingReducer';
+import { SellerReducer } from './Reducers/SellerReducer';
 
 
 
@@ -14,6 +15,7 @@ const reducer = combineReducers({
     cart:CartReducer,
     user:Userreducer,
     ShippingInfo:ShippingReducer,
+    SellerInfo:SellerReducer,
 });
 
 let initialState = {};

@@ -141,9 +141,11 @@ export const clearErrors =(dispatch)=>{
         const {data} =await instance.put(route,{currentPassword,newPassword},config);
 
         dispatch({type:Update_SUCCESS,payload:data.updatedUser});
+        return { success: true }; // Return success status
 
     } catch (error) {
         dispatch({type:Update_FAIL,payload:error.response.data.message})
+        return { success: false ,message:error.response.data.message}; // Return failure status
     }
    }
 

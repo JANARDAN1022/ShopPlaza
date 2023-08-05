@@ -13,8 +13,8 @@ import {arrow_right} from 'react-icons-kit/ikons/arrow_right'
 
 const slideImages = [
   {
-    url: 'https://rukminim1.flixcart.com/fk-p-flap/844/140/image/a473e0c2ff5779e1.jpg?q=50'
-}, 
+      url:'https://rukminim1.flixcart.com/fk-p-flap/844/140/image/22fbb4657fa662f9.jpg?q=50'
+  }, 
 {
     url: 'https://rukminim1.flixcart.com/fk-p-flap/844/140/image/a473e0c2ff5779e1.jpg?q=50'
  },

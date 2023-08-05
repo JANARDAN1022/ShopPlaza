@@ -5,6 +5,8 @@ import CategoryHeadContent from './CategoryHeadContent';
 
 const CategoryHeads = () => {
 
+    
+
     const Categoryimages =[
     {
         url:"https://rukminim1.flixcart.com/fk-p-flap/128/128/image/46376ceed3448aff.png?q=100"
@@ -39,15 +41,15 @@ const CategoryHeads = () => {
   return (
     <div className='CategoryHeadMainDiv'>
         <div className="CategoryHeadWrapper">
-    <CategoryHeadContent url={Categoryimages[0].url } CategoryHead='Grocery' icondisplay='none' />
-    <CategoryHeadContent url={Categoryimages[1].url } CategoryHead='Mobiles' icondisplay='none' />
-    <CategoryHeadContent url={Categoryimages[2].url } CategoryHead='Fashion' icondisplay='none'/>
-    <CategoryHeadContent url={Categoryimages[3].url } CategoryHead='Electronics' icondisplay='none'/>
-    <CategoryHeadContent url={Categoryimages[4].url } CategoryHead='Home' icondisplay='none'/>
-    <CategoryHeadContent url={Categoryimages[5].url } CategoryHead='Appliances'  icondisplay='none'/>
-    <CategoryHeadContent url={Categoryimages[6].url } CategoryHead='Travel' icondisplay='none'/>
-    <CategoryHeadContent url={Categoryimages[7].url } CategoryHead='Top Offers' icondisplay='none'/>
-    <CategoryHeadContent url={Categoryimages[8].url } CategoryHead='Beauty, Toys & More' icondisplay='none' />
+    <CategoryHeadContent url={Categoryimages[0].url } CategoryHead='Grocery' icondisplay='none' category={'Home & Kitchen Essentials'}/>
+    <CategoryHeadContent url={Categoryimages[1].url } CategoryHead='Mobiles' icondisplay='none' category={'Best of Electronics'} />
+    <CategoryHeadContent url={Categoryimages[2].url } CategoryHead='Fashion' icondisplay='none' category={'Shop for a Cool Summer'}/>
+    <CategoryHeadContent url={Categoryimages[3].url } CategoryHead='Electronics' icondisplay='none' category={'Best of Electronics'} />
+    <CategoryHeadContent url={Categoryimages[4].url } CategoryHead='Home' icondisplay='none' category={'Home & Kitchen Essentials'}/>
+    <CategoryHeadContent url={Categoryimages[5].url } CategoryHead='Appliances'  icondisplay='none' category={'Home & Kitchen Essentials'}/>
+    <CategoryHeadContent url={Categoryimages[6].url } CategoryHead='Travel' icondisplay='none' category={'Vacay Travel Essentials'} />
+    <CategoryHeadContent url={Categoryimages[7].url } CategoryHead='Top Offers' icondisplay='none' category={'Sports, Healthcare & more'}/>
+    <CategoryHeadContent url={Categoryimages[8].url } CategoryHead='Beauty, Toys & More' icondisplay='none' category={'Beauty, Food, Toys & more'}/>
     </div>
     </div>
   )

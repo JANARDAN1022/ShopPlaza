@@ -1,0 +1,192 @@
+.SellerInfoMain{
+    height: 94.68vh;
+    padding: 20px 10px;
+    background-color: white;
+}
+.SellerInfoContainer{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.SellerInfoStageContainer{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+.SellerInfoStage,.SellerInfoEmailStage,.SellerInfoPasswordStage,.SellerInfoDashBoardStage{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.SellerInfoEmailStage,.SellerInfoPasswordStage{
+    color: rgb(96, 112, 128);
+}
+.SellerInfoDashBoardStage{
+   display: flex;
+   gap: 10px;
+  font-weight: 600;
+}
+.SellerInfoContent{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.SellerPersonalInfo,.SellerBuisnessInfo,.SellerPaymentInfo{
+    height: 400px;
+    width: 450px;
+    border: 1px solid  rgba(40, 116, 240);
+    border-radius: 10px;
+    box-shadow: 0px 3px 3px rgba(40, 116, 240,0.3);
+}
+
+.CreateSellerACBtn{
+    width: 400px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(40, 116, 240,0.9);
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 0.5px;
+    padding:8px;
+    margin: auto;
+}
+.CreateSellerACBtn:hover{
+    transition: all 300ms ease;
+  color: white;
+  background-color: #2874f0;
+}
+
+.SellerPersonalInfo,.SellerBuisnessInfo,.SellerPaymentInfo{
+    display: flex;
+    flex-direction: column;
+}
+.SellerPersonalInfoHead,.SellerBuisnessHead,.SellerPaymentHead{
+    border-bottom: 1px solid orange;
+    width: 95.5%;
+    padding: 10px;
+}
+.SellerPersonalInfoHead>h3,.SellerBuisnessHead>h3,.SellerPaymentHead>h3{
+    text-align: center;
+    color: orange;
+}
+.PersonalInfoInputs,.BuisnessInfoSeller{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 60px;
+}
+.NameInputsSeller,.SellerPhoneInput{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.BuisnessName{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.BuisnessAddress{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.SellerPhoneInput{
+    margin-right: 39.7px;
+}
+.NameInputsSeller>input,.SellerPhoneInput>input,.BuisnessName>input{
+    width: 200px;
+    flex-wrap: wrap;
+    height: 50px;
+    padding-left: 20px;
+    border: 1px solid #2874f0;
+    border-radius: 5px;
+    outline-color: #2874f0;
+    color: orange;
+    font-size: 16px;
+}
+.BuisnessAddress>input{
+    width: 400px;
+    height: 65px;
+    padding-left: 20px;
+    border: 1px solid #2874f0;
+    border-radius: 5px;
+    outline-color: #2874f0;
+    color: orange;
+    font-size: 16px;
+}
+.NameInputsSeller>span,.SellerPhoneInput>span{
+    color: #2874f0;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+.BuisnessName>span,.BuisnessAddress>span{
+    color: #2874f0;
+    font-weight: 600;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+.RecievingMethods{
+    display: flex;
+    flex-direction: column;
+}
+.StripeRecieving,.CashRecieving,.BothMethodRecieving{
+    height: 107px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgba(40,116,240,0.03);
+}
+.StripeRecieving>span,.CashRecieving>span,.BothMethodRecieving>span{
+color: #2874f0;
+font-size: 20px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.StripeRecieving,.CashRecieving{
+    border-bottom: 1px solid orange;
+}
+
+.StripeRecieving:hover,.CashRecieving:hover,.BothMethodRecieving:hover{
+    transition: all 300ms ease;
+    background-color: rgba(40, 116, 240,0.1);
+}
+.SellerInfoNavLeft>h3{
+    cursor: pointer;
+    margin:0;
+    align-self: flex-end;
+    font-size: 24px;
+}
+.SellerInfoNavLeft>h3>a{
+    color:#2874f0;
+    text-decoration: none;
+}
+
+.ErrosDisplay{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+.SpecificERRORS{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 0.5px;
+}

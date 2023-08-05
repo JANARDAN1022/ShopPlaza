@@ -37,7 +37,7 @@
     text-decoration: underline;
     transition: all 300ms ease;
 }
-.ConfirmEmail,.ConfirmPhoneNo,.ConfirmAddress,.ConfirmPaymentMethod{
+.ConfirmEmail,.ConfirmPhoneNo,.ConfirmAddress,.TotalPayableAmount,.ConfirmPaymentMethod{
     display: flex;
     flex: 1;
     border: 1px solid rgba(0,0,0,0.1);
@@ -75,7 +75,18 @@
     font-size: 30px;
     color: green;
 }
-.ConfirmEmailRight,.ConfirmPhoneNoRight{
+.TotalConfLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right:1px solid rgba(0,0,0,0.1);
+    flex: 1;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-size: 28px;
+    color: green;
+}
+.ConfirmEmailRight,.ConfirmPhoneNoRight,.TotalConfRight{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -93,12 +104,16 @@
 }
 .ConfirmAddressRight{
     display: flex;
-    flex: 2;
     justify-content: center;
-    color: #2874f0;
-    font-size: 25px;
-    padding-left: 50px;
     align-items: center;
+    width: 532px;
+    padding-left: 40px;
+}
+.ConfirmAddressRightContainer{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 25px;
+    color: #2874f0;
 }
 .PlaceOrderButton{
     display: flex;

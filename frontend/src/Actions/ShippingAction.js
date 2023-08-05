@@ -3,7 +3,9 @@ ADD_SHIPPING_INFO,
 FAIL_SHIPPING_INFO,
 GET_SHIPPING_INFO,
 FAIL_GET_SHIPPING_INFO,
-DELETE_SHIPPINGINFO
+DELETE_SHIPPINGINFO,
+UPDATE_SHIPPINGINFO,
+UPDATE_FAIL_SHIPPINGINFO
 //REQ_ADD_SHIPPINGINFO,
 //REQ_GET_SHIPPINGINFO
 } from '../constants/ShippingConstants';
@@ -70,4 +72,24 @@ export const DeleteShippingInfo=(Id)=>async(dispatch)=>{
         dispatch({type:FAIL_GET_SHIPPING_INFO,payload:error});
     }
    
+}
+
+//Update ShippingInfo
+export const UpdateShippingInfo = (Id,address,state,city,email,phoneNo,pincode,PlaceType)=>async(dispatch)=>{
+    try {
+        const Route = `/ShippingInfo/${Id}`
+        const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
+        const {data} = await instance.put(Route,{address,state,city,email,phoneNo,pincode,PlaceType},config);
+
+        dispatch({
+            type:UPDATE_SHIPPINGINFO,
+            payload:{
+                id:Id,
+                Info:data.UpdatedInfo,
+            }
+        })
+        
+    } catch (error) {
+        dispatch({type:UPDATE_FAIL_SHIPPINGINFO,payload:error});
+    }
 }

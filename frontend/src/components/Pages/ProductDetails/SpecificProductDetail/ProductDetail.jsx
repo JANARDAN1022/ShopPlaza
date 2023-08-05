@@ -21,6 +21,7 @@ const ProductDetail = () => {
   },[dispatch,productid]);
 
   const {loading,error,product} =useSelector(state=>state.productDetails);
+  //console.log(product);
   const {user} = useSelector(state=>state.user);
   const userId = user?._id;
   const ProductName = `${product?.name}`;
@@ -28,23 +29,28 @@ const ProductDetail = () => {
   const productPrice = product?.price;
   const stock = product?.stock;
   const ItemId = product?._id;
+  const SellerInfo = product?.SellerInfo;
  
-  
+    
 
   const AddToCartHandler =()=>{
+    if(user!==null){
     setquantity(1);
     if(ProductName!=='' && ProductImg!=='' && productPrice && quantity>0 && stock>0){
-    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock));
+    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock,SellerInfo));
     setTimeout(() => {
       Navigate('/Cart');
     }, 1000);
   }
+}else{
+  Navigate(`/Login?redirect=ProductDetail/${ItemId}`);
+}
   }
 
   const HandleBuyNow = ()=>{
     setquantity(1);
     if(ProductName!=='' && ProductImg!=='' && productPrice && quantity>0 && stock>0){
-    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock));
+    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock,SellerInfo));
     setTimeout(() => {
       Navigate(`/BuyNow/${productid}`);
     }, 1000);
@@ -138,6 +144,22 @@ const ProductDetail = () => {
       <div className='ProductDetailsInfo'>
           <h1>Product Info:</h1>
           <p>{product?.description}</p>
+      </div>
+
+      <div className='SellersInfoDetail'>
+        <h1>Seller Info:</h1>
+        <div className='SellersBuisnessInfo'>
+        <span>Company/Buisness :</span>
+        <p>{product?.SellerInfo?.BuisnessName}</p>
+        </div>
+        <div className='SellersNameInfo'>
+        <span>Name:</span>
+        <p>{product?.SellerInfo?.FullName}</p>
+        </div>
+        <div className='SellersEmailInfo'>
+        <span>Email :</span>
+        <p>{product?.SellerInfo?.SellerEmail}</p>
+        </div>
       </div>
       
       </div>
