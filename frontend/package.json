@@ -1,6 +1,6 @@
 {
-  "homepage": "https://LoveSpark-app.vercel.app",
-  "name": "lovespark-app",
+  "homepage": "https://shop-plaza.vercel.app",
+  "name": "shop-plaza-app",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
