@@ -1,6 +1,7 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "homepage": "https://LoveSpark-app.vercel.app",
+  "name": "lovespark-app",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.8",

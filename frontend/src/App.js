@@ -44,7 +44,7 @@ const App = () => {
   */
 
   return (
-     <Router>
+     <Router basename='/'>
      <ShowNav />
       <Routes>
         <Route path='/' element={<Home />}/>
