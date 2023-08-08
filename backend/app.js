@@ -23,7 +23,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 // Update CORS configuration for production deployment
 const allowedOrigins = [
     'http://localhost:3000', // Add other origins as needed
-    "https://shop-plaza.vercel.app/" // Replace with your Vercel frontend URL
+    "https://shop-plaza-frontend.vercel.app/" // Replace with your Vercel frontend URL
   ];
   app.use(cors({
     origin: function (origin, callback) {
