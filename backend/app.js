@@ -51,4 +51,8 @@ app.use("/api/BecomeSeller",SellerRoute);
 app.use("/api/Orders/",OrderRoute);
 app.use(errorHandler);
 
+app.get('/',(req,res)=>{
+res.json('Wroking, Hello');
+});
+
 module.exports = app;
