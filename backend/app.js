@@ -22,7 +22,9 @@ app.use(bodyparser.urlencoded({extended:true}));
 
 const allowedOrigins = [
   'http://localhost:3000', // Add other origins as needed
-  'https://shop-plaza-frontend.vercel.app' // Remove the trailing slash from the URL
+  'https://shop-plaza-frontend.vercel.app', // Remove the trailing slash from the URL
+  'https://shop-plaza-frontend-git-master-janardanayachi3-gmailcom.vercel.app',
+  'https://shop-plaza-frontend-nhsera55b-janardanayachi3-gmailcom.vercel.app'
 ];
 
 app.use(cors({
