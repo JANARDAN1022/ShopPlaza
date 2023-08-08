@@ -13,7 +13,7 @@ UPDATE_FAIL_SHIPPINGINFO
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api", // replace with your API's base URL
+    baseURL: "https://shop-plaza.vercel.app/api", // replace with your API's base URL
   });
 
 

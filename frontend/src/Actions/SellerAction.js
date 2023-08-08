@@ -8,7 +8,7 @@ import axios from "axios";
 
 //Base Url
 const instance = axios.create({
-  baseURL: "http://localhost:5000/api/BecomeSeller",
+  baseURL: "https://shop-plaza.vercel.app/api/BecomeSeller",
 });
 
 //Register As Seller

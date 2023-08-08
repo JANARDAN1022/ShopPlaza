@@ -15,7 +15,7 @@ import {
     CLEAR_ERRORS } from "../constants/Productonstants";
  
     const instance = axios.create({
-      baseURL: "http://localhost:5000/api/products", //API's base URL
+      baseURL: "https://shop-plaza.vercel.app/api/products", //API's base URL
     });
 
 export const GetProducts = (keyword="",price=[0,100000],minRating=0,currentPage=1)=> async (dispatch)=>{

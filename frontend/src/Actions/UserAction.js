@@ -17,7 +17,7 @@ import {
 } from '../constants/UserConstants';
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api/users", // API's base URL
+    baseURL: "https://shop-plaza.vercel.app/api/users", // API's base URL
   });
 
   //Login User

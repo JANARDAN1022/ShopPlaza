@@ -22,10 +22,10 @@ const Confirmation = () => {
 
 const FetchSingleTotal = async()=>{
   if(ProductId){
-    const {data} = await axios.get(`http://localhost:5000/api/Payment/FinalAmount/${UserId}?productId=${ProductId}`);
+    const {data} = await axios.get(`https://shop-plaza.vercel.app/api/Payment/FinalAmount/${UserId}?productId=${ProductId}`);
     setData(data?.ToBePaid);
   }else{
-    const {data} = await axios.get(`http://localhost:5000/api/Payment/FinalAmount/${UserId}`)
+    const {data} = await axios.get(`https://shop-plaza.vercel.app/api/Payment/FinalAmount/${UserId}`)
     setData(data?.ToBePaid);
   }
 }
@@ -34,7 +34,7 @@ const HandlePlaceOrder = async()=>{
 if(ProductId){
   try {
  const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
- await axios.post(`http://localhost:5000/api/Orders/NewOrder/${UserId}`,{Shippinginfo:selectedAddress,ProductId:ProductId},config);
+ await axios.post(`https://shop-plaza.vercel.app/api/Orders/NewOrder/${UserId}`,{Shippinginfo:selectedAddress,ProductId:ProductId},config);
     if(paymentMethod==='Cash'){
       Navigate('/orderPlaced')
     }else{
@@ -47,7 +47,7 @@ if(ProductId){
   }else{
     try {
       const config =  {headers:{"Content-Type":"application/json"},withCredentials: true};
-      await axios.post(`http://localhost:5000/api/Orders/NewOrders/${UserId}`,{Shippinginfo:selectedAddress,CartItems:cartItems},config);
+      await axios.post(`https://shop-plaza.vercel.app/api/Orders/NewOrders/${UserId}`,{Shippinginfo:selectedAddress,CartItems:cartItems},config);
          if(paymentMethod==='Cash'){
            Navigate('/orderPlaced')
          }else{

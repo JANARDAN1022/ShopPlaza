@@ -7,7 +7,7 @@ import {ADD_TO_CART,
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: "http://localhost:5000/api/Cart", // replace with your API's base URL
+    baseURL: "https://shop-plaza.vercel.app/api/Cart", // replace with your API's base URL
   });
 
 //ADD TO CART

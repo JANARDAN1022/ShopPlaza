@@ -25,16 +25,16 @@ const PayStripe = () => {
     const Id = user?._id;
   
     async function getTotalAmount(){
-    const {data} = await axios.get(`http://localhost:5000/api/Payment/TotalAmount/${Id}`);
+    const {data} = await axios.get(`https://shop-plaza.vercel.app/api/Payment/TotalAmount/${Id}`);
     setTotalAmount(data?.totalAmount);
    }
 
 const GetStripeApiKey = async()=>{
-  const {data} = await axios.get('http://localhost:5000/api/Payment/stripeapikey');
+  const {data} = await axios.get('https://shop-plaza.vercel.app/api/Payment/stripeapikey');
   setStripeApiKey(data?.stripeApiKey);
 }
 const clientsecretKey = async()=>{
-  const {data} = await axios.post(`http://localhost:5000/api/Payment/process/Stripe`,{});
+  const {data} = await axios.post(`https://shop-plaza.vercel.app/api/Payment/process/Stripe`,{});
   setclientSecret(data?.clientSecret);
 }
 
@@ -59,7 +59,7 @@ const sumbithandler = async(e)=>{
    },
   };
 
-  const {data} = await axios.post(`http://localhost:5000/api/Payment/process/Stripe`,{Id},config);
+  const {data} = await axios.post(`https://shop-plaza.vercel.app/api/Payment/process/Stripe`,{Id},config);
   const ClientSecret = data?.clientSecret;
 
   if(!STRIPE || !ELEMENTS) return;
