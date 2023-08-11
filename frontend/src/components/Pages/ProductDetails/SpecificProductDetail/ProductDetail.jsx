@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import ImgSlider from './imgSlider';
 import {addToCart} from '../../../../Actions/CartAction';
 
+
 const ProductDetail = () => {
   const Navigate=useNavigate();
   const dispatch = useDispatch();
@@ -33,14 +34,15 @@ const ProductDetail = () => {
  
     
 
-  const AddToCartHandler =()=>{
+  const AddToCartHandler = async()=>{
     if(user!==null){
     setquantity(1);
     if(ProductName!=='' && ProductImg!=='' && productPrice && quantity>0 && stock>0){
-    dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock,SellerInfo));
-    setTimeout(() => {
-      Navigate('/Cart');
-    }, 1000);
+   const response = await dispatch(addToCart(userId,ItemId,ProductName,ProductImg,productPrice,quantity,stock,SellerInfo));
+   console.log(response.type);
+   if(response.success){
+     Navigate('/Cart');
+    }
   }
 }else{
   Navigate(`/Login?redirect=ProductDetail/${ItemId}`);

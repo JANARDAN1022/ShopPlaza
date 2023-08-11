@@ -8,7 +8,8 @@ const ShowFooter = () => {
   const hideNav =
     Location === "/RegisterAsSeller" ||
     Location === "/PasswordCreation" ||
-    Location === "/OnBoarding-Dashboard";
+    Location === "/OnBoarding-Dashboard"||
+    Location==='/test';
 
   if (hideNav) {
     return null; // Return null to hide the navbar

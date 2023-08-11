@@ -13,7 +13,6 @@ import Cart from './components/Pages/Cart/Cart';
 import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './components/Pages/Profile/Profile';
 import Confirmation from './components/Pages/Confirmation/Confirmation';
-//import PayStripe from './components/Pages/Stripe/PayStripe';
 import  OrderPlaced  from './components/Pages/OrderPlaced/OrderPlaced';
 import store from './store';
 import { LoadUser } from './Actions/UserAction';
@@ -24,7 +23,7 @@ import SellerRegister from './components/Pages/SellerRegister/Email-Categories/S
 import SellerPassword from './components/Pages/SellerRegister/Password/SellerPassword';
 import SellerInfo from './components/Pages/SellerRegister/SellerInfo/SellerInfo';
 import DashBoard from './components/layout/DashBoard/DashBoard';
-//import { useSelector } from 'react-redux';
+
 
 
 
@@ -36,12 +35,6 @@ const App = () => {
     store.dispatch(LoadUser());
   },[]);   
 
-  /*Issues TO BE SoLved Later:-
-  1st:- Logout during Add To Cart And Logging in with different user makes that product not to be not added in cart, mostly i guess cz of the local storage
-  2nd:- Add Loader Page And 404 Page
-  3rd:- 
-  
-  */
 
   return (
      <Router basename='/'>

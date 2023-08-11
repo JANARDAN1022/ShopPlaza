@@ -12,7 +12,7 @@ useEffect(()=>{
      Navigate('/Login');
      console.log('Please Login');
     }
-},[isAuthenticated,Navigate]);
+},[isAuthenticated,Navigate,loading]);
 
 return (
     Element?

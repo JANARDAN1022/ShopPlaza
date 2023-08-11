@@ -23,6 +23,7 @@ export const addToCart = (userId,ItemId,name,imgUrl,price,quantity,stock,SellerI
             type:ADD_TO_CART,
             payload: data.CartItem,
         });
+        return { success: true }; // Return success status
     }catch (error){
         dispatch({type:FAILED_CART,payload:error});
     }    

@@ -11,7 +11,8 @@ const ShowNav = () => {
     Location === "/process/payment" ||
     Location === "/RegisterAsSeller" ||
     Location === "/PasswordCreation" ||
-    Location==='/OnBoarding-Dashboard';
+    Location==='/OnBoarding-Dashboard'||
+    Location==='/test';
 
   if (hideNav) {
     return null; // Return null to hide the navbar

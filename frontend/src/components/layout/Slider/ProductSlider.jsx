@@ -7,6 +7,7 @@ import {arrow_left} from 'react-icons-kit/ikons/arrow_left'
 import {arrow_right} from 'react-icons-kit/ikons/arrow_right'
 import {GetProducts} from '../../../Actions/ProductAction';
 import {useDispatch,useSelector} from 'react-redux';
+import { Skeleton } from '@mui/material';
 
 
 
@@ -52,10 +53,14 @@ product.category === category ? true : false
 
   return (
     <div className='ProductSliderMain'>
-       
+      {loading?
+      <Skeleton height='500px' width='1840px' animation='wave' style={{zIndex:1000}}/>
+      :
+       <>
        <div className="ProductsCategory">
 
         <div className="categoryHead">
+
           <div className="CategoryWrapper">
            <h2 className='CategoryTitle'> {category}</h2>
         <button className='VIEWALL' onClick={()=>Navigate(`/category/${category}`)}>VIEW ALL</button>
@@ -71,19 +76,20 @@ product.category === category ? true : false
        </div>
 
 
-      
+       
      <div className="ProductsSlide" >
       <Icon onClick={()=>HandleArrowClick('Left')} className={`ShowARROWS ${showArrow?'ShowLeftArrow':'LeftArrow'}`} icon={arrow_left} size={45} />
       <div className="ProductSlidercontainer" ref={ProductSliderRef} >
        
-      {loading?'loading':error?'error':  filteredProducts.slice(0,8).map((product) => (
+      {error?'error':  filteredProducts.slice(0,8).map((product) => (
       <ProductSliderContent  key={product._id} product={product}  />
     ))}
       </div>
       <Icon onClick={()=>HandleArrowClick('Right')} className={`ShowARROWS ${!showArrow?'ShowRightArrow':'RightArrow'}`} icon={arrow_right}  size={45} />
       </div>
 
-      
+      </>
+}
       </div>
   )
 }
