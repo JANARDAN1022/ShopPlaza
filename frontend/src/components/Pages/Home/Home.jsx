@@ -43,7 +43,7 @@ const Home = () => {
   },[dispatch]);
 
   return (
-    <div >
+    <div>
       <CategoryHeads />
         <Slider />
             

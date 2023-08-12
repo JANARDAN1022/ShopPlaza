@@ -47,16 +47,14 @@ const filteredProducts = products.filter((product) =>
 product.category === category ? true : false
 );
 
-  
-
 
 
   return (
-    <div className='ProductSliderMain'>
-      {loading?
-      <Skeleton height='500px' width='1840px' animation='wave' style={{zIndex:1000}}/>
+    loading?
+      <Skeleton height='400px' width='1840px' animation='wave' sx={{ bgcolor: 'white' }} style={{zIndex:1000}}/>
       :
-       <>
+    <div className='ProductSliderMain'>
+
        <div className="ProductsCategory">
 
         <div className="categoryHead">
@@ -87,10 +85,8 @@ product.category === category ? true : false
       </div>
       <Icon onClick={()=>HandleArrowClick('Right')} className={`ShowARROWS ${!showArrow?'ShowRightArrow':'RightArrow'}`} icon={arrow_right}  size={45} />
       </div>
-
-      </>
-}
       </div>
+  
   )
 }
 
