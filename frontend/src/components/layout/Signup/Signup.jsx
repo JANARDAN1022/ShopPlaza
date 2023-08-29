@@ -12,6 +12,7 @@ const Signup = () => {
   const [password, setpassword] = useState("");
   const [errorMessage, seterrorMessage] = useState("");
   const [gender, setGender] = useState("");
+  const [Loading,setLoading]=useState(false);
   const Maleref = useRef();
   const Femaleref = useRef();
 
@@ -19,39 +20,48 @@ const Signup = () => {
   const dispatch = useDispatch();
   const { error, loading } = useSelector((state) => state.user);
   const redirect = window.location.search?window.location.search.split("=")[1]:'';
-  const HandleRegister = (e) => {
-    e.preventDefault();
   
+  
+  const HandleRegister = async(e) => {
+    e.preventDefault();
+
     const isAnyFieldEmpty = email === "" || password === "" || FirstName === "" || SecondName === "";
     const isGenderNotSelected = gender === "";
-  
+
     if (isAnyFieldEmpty || isGenderNotSelected) {
       const errorMessageText = isGenderNotSelected ? "Please select gender" : "Please Enter All Fields";
       seterrorMessage(errorMessageText);
       setTimeout(() => {
         seterrorMessage("");
       }, 3000);
-    } else if ((error==="Please login" || !error) && errorMessage === "") {
-      dispatch(RegisterUser(FirstName, SecondName, email, password, gender));
-      setFirstName("");
+    } else if ((error==="Please login" || !error) && errorMessage === ""){
+      setLoading(true);
+     const response = await dispatch(RegisterUser(FirstName, SecondName, email, password, gender));
+     if(response.success){
+      setLoading(false);
+     setFirstName("");
       setSecondName("");
       setemail("");
       setpassword("");
       Navigate(`/${redirect}`);
+     }else{
+      setLoading(false);
+      setFirstName("");
+      setSecondName("");
+      setemail("");
+      setpassword("");
+      seterrorMessage('Server Error Please Try Again or Try later');
+     }
     } else if (error) {
       seterrorMessage("User Already Exists");
-      console.log(error);
       setTimeout(() => {
         seterrorMessage("");
       }, 3000);
     }
   };
   
-  console.log(FirstName, SecondName, email, password, gender);
 
-  return loading ? (
-    "loading"
-  ) : (
+  return (
     <div className="SignupMainDiv">
       <div className="SignupCategoryHead">
         <CategoryCommon />
@@ -151,10 +161,12 @@ const Signup = () => {
                     />
                   </div>
                 </div>
-
-                <button className="SignupButton" onClick={HandleRegister}>
+               <div className="RegisterButtonDiv">
+               <button className="SignupButton" onClick={HandleRegister}>
                   Signup
                 </button>
+                <span style={{display:Loading || loading?'':'none'}} className="loader"></span>
+                </div>
               </form>
 
               <div className="LoginLink">

@@ -35,6 +35,8 @@ export const LoginUser = (email,password)=>async(dispatch)=>{
             payload:data.user,
         });
 
+        return {success:true};
+
     }catch(error){
         dispatch({type:LOGIN_FAIL,payload:error.response.data.message});
     }
@@ -53,6 +55,8 @@ export const RegisterUser = (FirstName,SecondName,email,password,gender)=>async(
             type:REGISTER_SUCCESS,
             payload:data.user,
         })
+
+        return {success:true};
     
 } catch (error) {
     dispatch({type:REGISTER_FAIL,payload:error.response.data.message});

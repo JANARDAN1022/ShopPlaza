@@ -15,6 +15,7 @@ const Login = () => {
   const [EmailMessage,setEmailMessage]=useState('Your Email');
   const [PasswordMessage,setPasswordMessage]=useState('Password');
   const [errorMessage,seterrorMessage]=useState('');
+  const [Loading,setLoading]=useState(false);
   const EmailRef = useRef();
   const PassRef = useRef();
   const Navigate = useNavigate();
@@ -37,16 +38,27 @@ useEffect(()=>{
   },[dispatch,isAuthenticated,Navigate,redirect,Role])
 
 
-  const HandleLogin = (e)=>{
+  const HandleLogin = async(e)=>{
     e.preventDefault();
 
     if(Email!== "" && Password!==""){
-
-      dispatch(LoginUser(Email,Password));
+     setLoading(true);
+     const Response = await dispatch(LoginUser(Email,Password));
+     if(Response.success){
       setEmail("");
       setPassword("");
       setEmailMessage('Your Email');
-      setPasswordMessage('Password')
+      setPasswordMessage('Password');
+      setLoading(false);
+     }else{
+      setLoading(false);
+      setEmail("");
+      setPassword("");
+      seterrorMessage('Inavlid Email or Password');
+      setTimeout(() => {
+        seterrorMessage('');
+      }, 3000);
+     }
       }
     
     if(Email!=="" && Password!==""&&error){
@@ -75,7 +87,6 @@ useEffect(()=>{
   
 
   return (
-     loading?'Loading':
     <div className='LoginMainDiv'>
 
       <div className="LoginCategoryhead">
@@ -104,7 +115,10 @@ useEffect(()=>{
           <input ref={PassRef} autoComplete='off' value={Password}  placeholder={PasswordMessage} name='Password' type='password' onChange={(e)=>setPassword(e.target.value)}/>
           </div>
           <span>{errorMessage}</span>
+          <div className='LoginButtonDiv'>
           <button className='LoginButton' onClick={HandleLogin}>Login</button>
+          <span style={{display:Loading || loading?'':'none'}} className="loader"></span>
+          </div>
           </form>
           
           <div className="SignupLink">

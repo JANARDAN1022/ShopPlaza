@@ -1,5 +1,5 @@
 import React,{useEffect}  from 'react';
-import {BrowserRouter as Router,Route, Routes, useParams} from 'react-router-dom';
+import {BrowserRouter as Router,Route, Routes} from 'react-router-dom';
 import './App.css'
 import Home from './components/Pages/Home/Home';
 import Login from './components/layout/Login/Login';
@@ -28,8 +28,7 @@ import DashBoard from './components/layout/DashBoard/DashBoard';
 
 
 const App = () => {
-  const Path = useParams();
-  console.log(Path);
+ 
  
   useEffect(()=>{
     store.dispatch(LoadUser());

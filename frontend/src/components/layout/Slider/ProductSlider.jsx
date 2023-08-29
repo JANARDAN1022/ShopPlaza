@@ -50,11 +50,10 @@ product.category === category ? true : false
 
 
   return (
-    loading?
-      <Skeleton height='400px' width='1840px' animation='wave' sx={{ bgcolor: 'white' }} style={{zIndex:1000}}/>
-      :
     <div className='ProductSliderMain'>
-
+      { loading?
+      <Skeleton height='300px' width='250px' animation='wave' variant='rectangular' sx={{bgcolor:'rgba(255,255,255,0.8)'}} style={{zIndex:1000}}/>
+      :
        <div className="ProductsCategory">
 
         <div className="categoryHead">
@@ -63,18 +62,21 @@ product.category === category ? true : false
            <h2 className='CategoryTitle'> {category}</h2>
         <button className='VIEWALL' onClick={()=>Navigate(`/category/${category}`)}>VIEW ALL</button>
         </div>
-       </div>
-        
+      </div>
+       
        <div className="categoryimage">
         <div className="imageContainer">
         <img className='Imageforcategory' src={categoryImg} alt='img' />
        </div>
        </div>
-
+    
        </div>
+        }
 
-
-       
+       {
+        loading?
+        <Skeleton width='1400px' sx={{bgcolor:'white'}} height='300px' animation='wave' variant='rectangular' />
+        :
      <div className="ProductsSlide" >
       <Icon onClick={()=>HandleArrowClick('Left')} className={`ShowARROWS ${showArrow?'ShowLeftArrow':'LeftArrow'}`} icon={arrow_left} size={45} />
       <div className="ProductSlidercontainer" ref={ProductSliderRef} >
@@ -85,6 +87,7 @@ product.category === category ? true : false
       </div>
       <Icon onClick={()=>HandleArrowClick('Right')} className={`ShowARROWS ${!showArrow?'ShowRightArrow':'RightArrow'}`} icon={arrow_right}  size={45} />
       </div>
+}
       </div>
   
   )

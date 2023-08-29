@@ -42,6 +42,8 @@ const Home = () => {
   window.scrollTo({top:0,behavior:'smooth'});
   },[dispatch]);
 
+  
+
   return (
     <div>
       <CategoryHeads />
