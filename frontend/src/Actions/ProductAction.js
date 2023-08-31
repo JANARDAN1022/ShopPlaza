@@ -71,7 +71,7 @@ export const getSimilarProducts = (productId,price=[0,100000],minRating) => asyn
       type: ALL_SIMILARCATEGORIES_SUCCESS,
       payload: data,
     });
-    console.log(data);
+    return {success:true};
   } catch (error) {
     dispatch({
       type: ALL_SIMILARCATEGORIES_FAIL,

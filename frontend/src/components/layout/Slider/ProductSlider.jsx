@@ -43,7 +43,7 @@ const HandleArrowClick=(direction)=>{
 
 }
 
-const filteredProducts = products.filter((product) =>
+const filteredProducts = products?.filter((product) =>
 product.category === category ? true : false
 );
 
@@ -81,7 +81,7 @@ product.category === category ? true : false
       <Icon onClick={()=>HandleArrowClick('Left')} className={`ShowARROWS ${showArrow?'ShowLeftArrow':'LeftArrow'}`} icon={arrow_left} size={45} />
       <div className="ProductSlidercontainer" ref={ProductSliderRef} >
        
-      {error?'error':  filteredProducts.slice(0,8).map((product) => (
+      {error?'error':  filteredProducts?.slice(0,8).map((product) => (
       <ProductSliderContent  key={product._id} product={product}  />
     ))}
       </div>

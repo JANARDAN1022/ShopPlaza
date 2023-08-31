@@ -10,6 +10,7 @@ import SimpleSlider from './ReviewSlider';
 import "slick-carousel/slick/slick.css";
 import ImgSlider from './imgSlider';
 import {addToCart} from '../../../../Actions/CartAction';
+import {Skeleton} from '@mui/material';
 
 
 const ProductDetail = () => {
@@ -67,8 +68,10 @@ const ProductDetail = () => {
      <div className='ProductDetailContainer'>
       
       <div className='ProductDetailLeft'>
-        {loading?'Loading'
-        :error?"error"
+        {loading?
+        <Skeleton animation='wave' variant='rectangular' height={350} />
+        :error?
+        {error}
         :
         <ImgSlider Product={product} />
         }

@@ -56,17 +56,18 @@ export const ProductReducer = (state = {products:[],categories:[]},action)=>{
             case ALL_SIMILARCATEGORIES_REQUEST:
       return {
         loading:true,
-        products:[]
+        similarProducts:[]
       }
     case ALL_SIMILARCATEGORIES_SUCCESS:
       return {
         ...state,
+        loading:false,
         similarProducts: action.payload,
       }
     case ALL_SIMILARCATEGORIES_FAIL:
       return {
         loading:false,
-        products:[],
+        similarProducts:[],
         error:action.payload
       }
       case CLEAR_ERRORS:

@@ -657,6 +657,10 @@ const Payment = () => {
                      setSelectedAddress(info);
                       setChangeAddress(false);
                     }}
+                    onChange={()=>{
+                      setSelectedAddress(info);
+                      setChangeAddress(false);
+                    }}
                   />
                 </div>
                 <span onClick={() => HandleremoveAddress(info?._id)}>

@@ -9,7 +9,9 @@ const SimilarProductsContent = ({products,Loaded}) => {
   const Navigate=useNavigate();
 
   const ProductClick = (id)=>{
+    if(Loaded){
     Navigate(`/ProductDetail/${id}`);
+    }
   }
   const description = `${products?.description.split(" ").slice(0,10).join(" ")}....`;
   return (

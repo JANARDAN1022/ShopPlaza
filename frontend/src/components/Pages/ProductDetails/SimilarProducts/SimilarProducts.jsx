@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './SimilarProducts.css';
 import CategoryCommon from '../../../Categories/CommonCategory/CategoryCommon';
 import SimilarProductsContent from './SimilarProductsContent';
@@ -10,7 +10,7 @@ import {AiFillStar} from 'react-icons/ai';
 import {getSimilarProducts} from '../../../../Actions/ProductAction';
 import {useDispatch,useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom';
-
+//import { Skeleton } from '@mui/material';
 
 
 
@@ -21,7 +21,7 @@ const check3ref = useRef();
 const check4ref =useRef();
 
 const {similarProducts} = useSelector(state => state.products);
-const Loaded = similarProducts?.success;
+const [Loaded,setLoaded]=useState(false);
 const MaximumAmount = similarProducts && similarProducts.MaxAmount;
 const products = similarProducts && similarProducts.relatedProducts;
  const [minRating,setminRating]=useState(0);
@@ -42,10 +42,17 @@ const dispatch = useDispatch();
   }
 };
 
+const FetchSimilarproducts = useCallback(async()=>{
+  const Response = await  dispatch(getSimilarProducts(productId,price,minRating));
+     if(Response.success){
+      setLoaded(true);
+     }
+},[dispatch,productId,price,minRating]) 
+
  useEffect(()=>{
-  dispatch(getSimilarProducts(productId,price,minRating));
+  FetchSimilarproducts();
   window.scrollTo(0,0);
- },[dispatch,productId,price,minRating]);
+ },[FetchSimilarproducts]);
 
 
 
@@ -82,7 +89,7 @@ const dispatch = useDispatch();
          <RxCross2 />
          <span>{minRating} & above</span>
          </div>
-         <div className='SelectedFiltersContent' style={{display: price[0]!==0 || price[1]!==MaximumAmount?'flex':'none'}} onClick={()=>setprice([0,MaximumAmount?MaximumAmount:100000])}>
+         <div className='SelectedFiltersContent' style={{display: price[0]!==0 && price[1]!==MaximumAmount?'flex':'none'}} onClick={()=>setprice([0,MaximumAmount?MaximumAmount:100000])}>
          <RxCross2 />
          <span>{`${price[0]}-${price[1]}`}</span>
          </div>
@@ -158,12 +165,10 @@ const dispatch = useDispatch();
 
      </div>
      </div>
-     
      <div className='SimilarProducts'>
-     {products && products.map((products)=>(
+    {products && products.map((products)=>(
           <SimilarProductsContent products={products} Loaded={Loaded} key={products._id} />
-        ))
-        }
+    ))}
      </div>
 
    </div>
